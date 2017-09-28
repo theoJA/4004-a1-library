@@ -5,10 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class ItemTest {
-
+	
+	
+	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void itemId() {
+		int result = 0;
+		assertEquals("1", result);
 	}
 
 }
