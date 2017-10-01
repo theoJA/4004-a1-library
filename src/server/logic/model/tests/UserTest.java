@@ -7,7 +7,7 @@ import server.logic.model.User;
 
 public class UserTest {
 
-	private User testUser = new User(7, "password"); 
+	private User testUser = new User(7, "password", "Bob"); 
 	
 	// All setters are implemented privately in the User class
 	// Only getters will be tested
@@ -22,4 +22,8 @@ public class UserTest {
 		assertEquals("password", testUser.getUserPassword());
 	}
 	
+	@Test
+	public void test_getUserUsername() {
+		assertEquals("Bob", testUser.getUserUsername());
+	}
 }
