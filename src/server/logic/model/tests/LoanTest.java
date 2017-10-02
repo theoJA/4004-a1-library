@@ -7,7 +7,7 @@ import server.logic.model.Loan;
 
 public class LoanTest {
 
-	private Loan testLoan = new Loan(123, "1234567890123");
+	private Loan testLoan = new Loan(123, "1234567890123", 2);
 	
 	@Test
 	public void test_getUserId() {
@@ -17,5 +17,10 @@ public class LoanTest {
 	@Test
 	public void test_getISBN() {
 		assertEquals("1234567890123", testLoan.getISBN());
+	}
+	
+	@Test
+	public void test_getCopies() {
+		assertEquals(2, testLoan.getCopies());
 	}
 }

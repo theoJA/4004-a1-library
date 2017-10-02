@@ -3,10 +3,12 @@ package server.logic.model;
 public class Loan {
 	int userId;
 	String ISBN;
+	int copies;
 	
-	public Loan(int userId, String ISBN) {
+	public Loan(int userId, String ISBN, int copies) {
 		this.setUserId(userId);
 		this.setISBN(ISBN);
+		this.setCopies(copies);
 	}
 	
 	// Loan class setters
@@ -16,6 +18,9 @@ public class Loan {
 	private void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
+	private void setCopies(int copies) {
+		this.copies = copies;
+	}
 	//
 	
 	public int getUserId() {
@@ -23,5 +28,8 @@ public class Loan {
 	}
 	public String getISBN() {
 		return ISBN;
+	}
+	public int getCopies() {
+		return copies;
 	}
 }
