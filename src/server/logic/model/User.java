@@ -11,7 +11,7 @@ public class User {
 		this.setUserUsername(username);
 	}
 	
-	// making the setter methods private so only the user class can set the id
+	// Making the setter methods private so only the user class can set the member variables
 	private void setUserId(int userId) {
 		this.userId = userId;
 	}
@@ -21,7 +21,7 @@ public class User {
 	private void setUserUsername(String username) {
 		this.username = username;
 	}
-	
+	//
 	
 	public int getUserId() {
 		return userId;
