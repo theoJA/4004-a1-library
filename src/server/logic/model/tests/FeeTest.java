@@ -14,4 +14,5 @@ public class FeeTest {
 		assertEquals(12, testFee.getUserId());
 	}
 
+	
 }
