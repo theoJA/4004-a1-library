@@ -7,12 +7,14 @@ public class Loan {
 	String ISBN;
 	int copies;
 	Date date;
+	String renewState;
 	
-	public Loan(int userId, String ISBN, int copies, Date date) {
+	public Loan(int userId, String ISBN, int copies, Date date, String renewState) {
 		this.setUserId(userId);
 		this.setISBN(ISBN);
 		this.setCopies(copies);
 		this.setDate(date);
+		this.setRenewState(renewState);
 	}
 	
 	// Loan class setters
@@ -28,6 +30,9 @@ public class Loan {
 	private void setDate(Date date) {
 		this.date = date;
 	}
+	private void setRenewState(String renewState) {
+		this.renewState = renewState;
+	}
 	//
 	
 	public int getUserId() {
@@ -41,5 +46,8 @@ public class Loan {
 	}
 	public Date getDate() {
 		return date;
+	}
+	public String getRenewState() {
+		return renewState;
 	}
 }
