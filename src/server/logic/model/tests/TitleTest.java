@@ -19,5 +19,4 @@ public class TitleTest {
 		assertEquals("Hello World!", testTitle.getBookTitle());
 	}
 	
-	
 }
