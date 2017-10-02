@@ -7,7 +7,7 @@ import server.logic.model.Item;
 
 public class ItemTest {
 
-	private Item testItem = new Item(1, "1234567890123");
+	private Item testItem = new Item(1, "1234567890123", 3);
 	
 	// Item setters automatically gets tested when instance of Item is created
 	// Getters tests both the getters and setters
@@ -20,6 +20,11 @@ public class ItemTest {
 	@Test
 	public void test_getItemISBN() {
 		assertEquals("1234567890123", testItem.getItemISBN());
+	}
+	
+	@Test
+	public void test_getItemCopies() {
+		assertEquals(3, testItem.getItemCopies());
 	}
 
 }
