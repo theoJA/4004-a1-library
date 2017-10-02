@@ -19,12 +19,12 @@ public class ItemTest {
 	
 	@Test
 	public void test_getItemISBN() {
-		assertEquals("1234567890123", testItem.getItemISBN());
+		assertEquals("1234567890123", testItem.getISBN());
 	}
 	
 	@Test
 	public void test_getItemCopies() {
-		assertEquals(3, testItem.getItemCopies());
+		assertEquals(3, testItem.getCopies());
 	}
 
 }

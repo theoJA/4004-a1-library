@@ -11,7 +11,7 @@ public class TitleTest {
 	
 	@Test
 	public void test_getTitleISBN() {
-		assertEquals("1234567890123", testTitle.getTitleISBN());
+		assertEquals("1234567890123", testTitle.getISBN());
 	}
 	
 	@Test

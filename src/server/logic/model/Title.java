@@ -5,12 +5,12 @@ public class Title {
 	String bookTitle;
 	
 	public Title(String ISBN, String bookTitle) {
-		this.setTitleISBN(ISBN);
+		this.setISBN(ISBN);
 		this.setBookTitle(bookTitle);
 	}
 	
 	// Private setters for the Title class
-	private void setTitleISBN(String ISBN) {
+	private void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
 	private void setBookTitle(String bookTitle) {
@@ -18,7 +18,7 @@ public class Title {
 	}
 	//
 	
-	public String getTitleISBN() {
+	public String getISBN() {
 		return ISBN;
 	}
 	public String getBookTitle() {
