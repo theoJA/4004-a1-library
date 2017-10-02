@@ -10,7 +10,7 @@ public class TitleTest {
 	private Title testTitle = new Title("1234567890123", "Hello World!");
 	
 	@Test
-	public void test_getTitleISBN() {
+	public void test_getISBN() {
 		assertEquals("1234567890123", testTitle.getISBN());
 	}
 	

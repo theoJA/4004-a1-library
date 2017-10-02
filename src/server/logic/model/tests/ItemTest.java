@@ -18,12 +18,12 @@ public class ItemTest {
 	}
 	
 	@Test
-	public void test_getItemISBN() {
+	public void test_getISBN() {
 		assertEquals("1234567890123", testItem.getISBN());
 	}
 	
 	@Test
-	public void test_getItemCopies() {
+	public void test_getCopies() {
 		assertEquals(3, testItem.getCopies());
 	}
 
