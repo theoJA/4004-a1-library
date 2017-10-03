@@ -13,8 +13,8 @@ public class UserTable {
 	
 	private UserTable(){
     	// Initializing the user table
-    	String[] passwordList=new String[]{"Zhibo","Yu","Michelle","Kevin","Sun"};
-    	String[] usernameList=new String[]{"Zhibo@carleton.ca","Yu@carleton.ca","Michelle@carleton.ca","Kevin@carleton.ca","Sun@carleton.ca"};
+    	String[] passwordList=new String[]{"zhibo","yu","michelle","kevin","sun"};
+    	String[] usernameList=new String[]{"zhibo@carleton.ca","yu@carleton.ca","michelle@carleton.ca","kevin@carleton.ca","sun@carleton.ca"};
     	for(int i = 0; i < usernameList.length; i++){
 			User deuser = new User(i, usernameList[i], passwordList[i]);
 			userList.add(deuser);
@@ -24,4 +24,8 @@ public class UserTable {
     public static final UserTable getInstance() {
         return UserListCollection.INSTANCE;
     }
+    
+    public List<User> getUserList() {
+		return userList;
+	}
 }

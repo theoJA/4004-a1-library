@@ -5,10 +5,10 @@ public class User {
 	String password;
 	String username;
 	
-	public User(int userId, String password, String username) {
+	public User(int userId, String username, String password) {
 		this.setUserId(userId);
-		this.setPassword(password);
 		this.setUsername(username);
+		this.setPassword(password);
 	}
 	
 	// Making the setter methods private so only the user class can set the member variables
