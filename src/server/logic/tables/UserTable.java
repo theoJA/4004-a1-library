@@ -28,4 +28,28 @@ public class UserTable {
     public List<User> getUserList() {
 		return userList;
 	}
+    
+    public String checkUserExists(String username, String password) {
+		String result="";
+		int flag=0;
+		int index=0;
+		for(int i=0;i<userList.size();i++){
+			if(userList.get(i).getUsername().equalsIgnoreCase(username)){
+				flag=flag+1;
+				index=i;
+			}else{
+				flag=flag+0;
+			}
+		}
+		boolean userPassword=userList.get(index).getPassword().equalsIgnoreCase(password);
+		if(flag!=0 && userPassword){
+			result="User exists.";
+		}else if(flag==0){
+			result="User does not exist.";
+		}else if(userPassword==false){
+			result="Password does not match.";
+		}
+		return result;
+	}
+
 }

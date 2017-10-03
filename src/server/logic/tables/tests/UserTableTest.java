@@ -9,8 +9,8 @@ import org.junit.Test;
 
 public class UserTableTest {
 
-	private String testUsername = "zhibo@carleton.ca";
-	private String testPassword = "zhibo";
+	private String testUsername = "kevin@carleton.ca";
+	private String testPassword = "kevin";
 	
 	// Assigning the address in memory of instance of UserTable to a variable
 	private UserTable testUserTable = UserTable.getInstance();
@@ -24,11 +24,16 @@ public class UserTableTest {
 	@Test
 	public void test_getUserList() {
 		List<User> testUserList = testUserTable.getUserList();
-		System.out.println(testUserList);
 		assertEquals(testUserList, testUserTable.getUserList());
-		assertEquals(testUsername, testUserTable.getUserList().get(0).getUsername());
-		assertEquals(testPassword, testUserTable.getUserList().get(0).getPassword());
+		assertEquals(testUsername, testUserTable.getUserList().get(3).getUsername());
+		assertEquals(testPassword, testUserTable.getUserList().get(3).getPassword());
 	}
 	
+	@Test
+	public void test_checkUserExists() {
+		assertEquals("User exists.", testUserTable.checkUserExists(testUsername, testPassword));
+		assertEquals("User does not exist.", testUserTable.checkUserExists(testUsername + "typo", testPassword));
+		assertEquals("Password does not match.", testUserTable.checkUserExists(testUsername, testPassword + "typo"));
+	}
 
 }
