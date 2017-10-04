@@ -53,6 +53,10 @@ public class UserTableTest {
 	
 	@Test
 	public void test_createUser() {
+		// Should return true when a user is successfully created and added to the user list
 		assertTrue(testUserTable.createUser(newTestUsername, newTestPassword));
+		
+		// Should return false when given user info exists in the user list
+		assertFalse(testUserTable.createUser(testUsername, testPassword));
 	}
 }
