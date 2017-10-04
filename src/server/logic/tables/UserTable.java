@@ -52,22 +52,22 @@ public class UserTable {
 		return result;
 	}
     
-    public int lookup(String string) {
+    public int lookup(String username) {
 		int userid=-1;
 		for(int i=0;i<userList.size();i++){
-			if(userList.get(i).getUsername().equalsIgnoreCase(string)){
+			if(userList.get(i).getUsername().equalsIgnoreCase(username)){
 				userid=i;
 			}
 		}
 		return userid;
 	}
     
-    public boolean lookup(int j) {
+    public boolean lookup(int passedUserId) {
 		boolean result=true;
 		int flag=0;
 		for(int i=0;i<userList.size();i++){
 			int userid=(userList.get(i)).getUserId();
-			if(userid==j){
+			if(userid==passedUserId){
 				flag=flag+1;
 			}else{
 				flag=flag+0;	
@@ -77,6 +77,28 @@ public class UserTable {
 			result=false;
 		}
 		return result;
+	}
+    
+    public Object createUser(String username, String password) {		
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<userList.size();i++){
+			String usernameFromList=(userList.get(i)).getUsername();
+			if(usernameFromList.equalsIgnoreCase(username)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag==0){
+			User newuser=new User(userList.size(),username,password);
+			result=userList.add(newuser);
+			//logger.info(String.format("Operation:Create New User;User Info:[%s,%s];State:Success", string,string2));
+		}else{
+			result=false;
+			//logger.info(String.format("Operation:Create New User;User Info:[%s,%s];State:Fail;Reason:The User already existed.", string,string2));
+		}
+		return result;	
 	}
 
 }

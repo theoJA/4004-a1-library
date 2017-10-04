@@ -12,6 +12,9 @@ public class UserTableTest {
 	private String testUsername = "kevin@carleton.ca";
 	private String testPassword = "kevin";
 	private int testUserId = 3;
+	private String newTestUsername = "testUser@carleton.ca";
+	private String newTestPassword = "testUser";
+	
 	
 	// Assigning the address in memory of instance of UserTable to a variable
 	private UserTable testUserTable = UserTable.getInstance();
@@ -43,12 +46,13 @@ public class UserTableTest {
 	}
 	
 	@Test
-	public void  test_lookupByUserId_True() {
+	public void  test_lookupByUserId() {
 		assertTrue(testUserTable.lookup(testUserId));
-	}
-	
-	@Test
-	public void  test_lookupByUserId_False() {
 		assertFalse(testUserTable.lookup(20));
 	}
+	
+//	@Test
+//	public void test_createUser() {
+//		assertTrue(testUserTable.createUser(newTestUsername, newTestPassword));
+//	}
 }
