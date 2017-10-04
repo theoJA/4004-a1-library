@@ -11,6 +11,7 @@ public class UserTableTest {
 
 	private String testUsername = "kevin@carleton.ca";
 	private String testPassword = "kevin";
+	private int testUserId = 3;
 	
 	// Assigning the address in memory of instance of UserTable to a variable
 	private UserTable testUserTable = UserTable.getInstance();
@@ -36,4 +37,8 @@ public class UserTableTest {
 		assertEquals("Password does not match.", testUserTable.checkUserExists(testUsername, testPassword + "typo"));
 	}
 
+	@Test
+	public void  test_lookupByUsername() {
+		assertEquals(testUserId, testUserTable.lookup(testUsername));
+	}
 }

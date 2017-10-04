@@ -51,5 +51,15 @@ public class UserTable {
 		}
 		return result;
 	}
+    
+    public int lookup(String string) {
+		int userid=-1;
+		for(int i=0;i<userList.size();i++){
+			if(userList.get(i).getUsername().equalsIgnoreCase(string)){
+				userid=i;
+			}
+		}
+		return userid;
+	}
 
 }
