@@ -79,7 +79,7 @@ public class UserTable {
 		return result;
 	}
     
-    public Object createUser(String username, String password) {		
+    public boolean createUser(String username, String password) {		
 		boolean result=true;
 		int flag=0;
 		for(int i=0;i<userList.size();i++){

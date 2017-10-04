@@ -51,8 +51,8 @@ public class UserTableTest {
 		assertFalse(testUserTable.lookup(20));
 	}
 	
-//	@Test
-//	public void test_createUser() {
-//		assertTrue(testUserTable.createUser(newTestUsername, newTestPassword));
-//	}
+	@Test
+	public void test_createUser() {
+		assertTrue(testUserTable.createUser(newTestUsername, newTestPassword));
+	}
 }
