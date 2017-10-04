@@ -28,6 +28,7 @@ public class UserTableTest {
 	@Test
 	public void test_getUserList() {
 		List<User> testUserList = testUserTable.getUserList();
+		
 		assertEquals(testUserList, testUserTable.getUserList());
 		assertEquals(testUsername, testUserTable.getUserList().get(3).getUsername());
 		assertEquals(testPassword, testUserTable.getUserList().get(3).getPassword());
@@ -47,7 +48,10 @@ public class UserTableTest {
 	
 	@Test
 	public void  test_lookupByUserId() {
+		// True when user id exists in the user list
 		assertTrue(testUserTable.lookup(testUserId));
+		
+		// False when user id does not exist in the user list
 		assertFalse(testUserTable.lookup(20));
 	}
 	
@@ -55,8 +59,12 @@ public class UserTableTest {
 	public void test_createUser() {
 		// Should return true when a user is successfully created and added to the user list
 		assertTrue(testUserTable.createUser(newTestUsername, newTestPassword));
+		// Checking to see if created user is indeed in the list
+		assertEquals(newTestUsername, testUserTable.getUserList().get(testUserTable.lookup(newTestUsername)).getUsername());
+		assertEquals(newTestPassword, testUserTable.getUserList().get(testUserTable.lookup(newTestUsername)).getPassword());
 		
 		// Should return false when given user info exists in the user list
 		assertFalse(testUserTable.createUser(testUsername, testPassword));
 	}
+	
 }
