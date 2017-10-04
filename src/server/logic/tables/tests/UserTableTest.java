@@ -41,4 +41,14 @@ public class UserTableTest {
 	public void  test_lookupByUsername() {
 		assertEquals(testUserId, testUserTable.lookup(testUsername));
 	}
+	
+	@Test
+	public void  test_lookupByUserId_True() {
+		assertTrue(testUserTable.lookup(testUserId));
+	}
+	
+	@Test
+	public void  test_lookupByUserId_False() {
+		assertFalse(testUserTable.lookup(20));
+	}
 }
