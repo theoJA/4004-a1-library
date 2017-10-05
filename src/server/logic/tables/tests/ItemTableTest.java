@@ -18,6 +18,5 @@ public class ItemTableTest {
 		// Check if UserTable.getInstance() indeed returns the instance of UserTable
 		assertEquals(testItemTable, ItemTable.getInstance());
 	}
-		
-
+	
 }
