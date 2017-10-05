@@ -42,12 +42,12 @@ public class UserTableTest {
 	}
 
 	@Test
-	public void  test_lookupByUsername() {
+	public void test_lookupByUsername() {
 		assertEquals(testUserId, testUserTable.lookup(testUsername));
 	}
 	
 	@Test
-	public void  test_lookupByUserId() {
+	public void test_lookupByUserId() {
 		// True when user id exists in the user list
 		assertTrue(testUserTable.lookup(testUserId));
 		

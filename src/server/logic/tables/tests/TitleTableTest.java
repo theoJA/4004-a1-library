@@ -30,6 +30,11 @@ public class TitleTableTest {
 		assertEquals(testBookTitle, testTitleTable.getTitleList().get(1).getBookTitle());
 	}
 	
+	@Test
+	public void test_lookupByISBN() {
+		assertTrue(testTitleTable.lookup(testISBN));
+		assertFalse(testTitleTable.lookup("1234567890123"));
+	}
 	
 
 }
