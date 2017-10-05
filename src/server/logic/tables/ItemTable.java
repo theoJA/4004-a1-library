@@ -30,4 +30,8 @@ public class ItemTable {
     public static final ItemTable getInstance() {
         return ItemListCollection.INSTANCE;
     }
+    
+    public List<Item> getItemList() {
+		return itemList;
+	}
 }
