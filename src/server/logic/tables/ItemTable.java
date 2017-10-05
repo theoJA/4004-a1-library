@@ -35,13 +35,13 @@ public class ItemTable {
 		return itemList;
 	}
     
-    public boolean lookup(String ISBN, String copies) {
+    public boolean lookup(String ISBN, String copyNumber) {
 		boolean result=true;
 		int flag=0;
 		for(int i=0;i<itemList.size();i++){
 			String ISBNFromList=(itemList.get(i)).getISBN();
 			String copiesFromList=(itemList.get(i)).getCopyNumber();
-			if(ISBNFromList.equalsIgnoreCase(ISBN) && copiesFromList.equalsIgnoreCase(copies)){
+			if(ISBNFromList.equalsIgnoreCase(ISBN) && copiesFromList.equalsIgnoreCase(copyNumber)){
 				flag=flag+1;
 			}else{
 				flag=flag+0;	
