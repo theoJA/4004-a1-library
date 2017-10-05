@@ -3,12 +3,12 @@ package server.logic.model;
 public class Item {
 	int itemId;
 	String ISBN;
-	String copies;
+	String copyNumber;
 	
-	public Item(int itemId, String ISBN, String copies) {
+	public Item(int itemId, String ISBN, String copyNumber) {
 		this.setItemId(itemId);
 		this.setISBN(ISBN);
-		this.setCopies(copies);
+		this.setCopyNumber(copyNumber);
 	}
 	
 	// Private setters for Item class
@@ -18,8 +18,8 @@ public class Item {
 	private void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
-	private void setCopies(String copies) {
-		this.copies = copies;
+	private void setCopyNumber(String copyNumber) {
+		this.copyNumber = copyNumber;
 	}
 	//
 	
@@ -31,7 +31,7 @@ public class Item {
 		return ISBN;
 	}
 	
-	public String getCopies() {
-		return copies;
+	public String getCopyNumber() {
+		return copyNumber;
 	}
 }

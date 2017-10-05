@@ -34,4 +34,22 @@ public class ItemTable {
     public List<Item> getItemList() {
 		return itemList;
 	}
+    
+    public boolean lookup(String ISBN, String copies) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<itemList.size();i++){
+			String ISBNFromList=(itemList.get(i)).getISBN();
+			String copiesFromList=(itemList.get(i)).getCopyNumber();
+			if(ISBNFromList.equalsIgnoreCase(ISBN) && copiesFromList.equalsIgnoreCase(copies)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag==0){
+			result=false;
+		}
+		return result;
+	}
 }

@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import server.logic.model.Item;
-import server.logic.model.Title;
 import server.logic.tables.ItemTable;
 
 import java.util.List;
@@ -31,6 +30,6 @@ public class ItemTableTest {
 		assertEquals(testTitleList, testItemTable.getItemList());
 		assertEquals(testItemId, testItemTable.getItemList().get(testItemId).getItemId());
 		assertEquals(testISBN, testItemTable.getItemList().get(testItemId).getISBN());
-		assertEquals(testCopies, testItemTable.getItemList().get(testItemId).getCopies());
+		assertEquals(testCopies, testItemTable.getItemList().get(testItemId).getCopyNumber());
 	}
 }

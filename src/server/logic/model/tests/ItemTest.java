@@ -24,7 +24,7 @@ public class ItemTest {
 	
 	@Test
 	public void test_getCopies() {
-		assertEquals("3", testItem.getCopies());
+		assertEquals("3", testItem.getCopyNumber());
 	}
 
 }
