@@ -3,9 +3,9 @@ package server.logic.model;
 public class Item {
 	int itemId;
 	String ISBN;
-	int copies;
+	String copies;
 	
-	public Item(int itemId, String ISBN, int copies) {
+	public Item(int itemId, String ISBN, String copies) {
 		this.setItemId(itemId);
 		this.setISBN(ISBN);
 		this.setCopies(copies);
@@ -18,7 +18,7 @@ public class Item {
 	private void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
-	private void setCopies(int copies) {
+	private void setCopies(String copies) {
 		this.copies = copies;
 	}
 	//
@@ -31,7 +31,7 @@ public class Item {
 		return ISBN;
 	}
 	
-	public int getCopies() {
+	public String getCopies() {
 		return copies;
 	}
 }

@@ -48,4 +48,26 @@ public class TitleTable {
 		}
 		return result;
 	}
+    
+    public boolean createTitle(String ISBN, String bookTitle) {		
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<titleList.size();i++){
+			String ISBNFromList=(titleList.get(i)).getISBN();
+			if(ISBNFromList.equalsIgnoreCase(ISBN)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag==0){
+			Title newtitle=new Title(ISBN,bookTitle);
+			result=titleList.add(newtitle);
+			//logger.info(String.format("Operation:Create New Title;Title Info:[%s,%s];State:Success", string,string2));
+		}else{
+			result=false;
+			//logger.info(String.format("Operation:Create New Title;Title Info:[%s,%s];State:Fail;Reason:The ISBN already existed.", string,string2));
+		}
+		return result;	
+	}
 }

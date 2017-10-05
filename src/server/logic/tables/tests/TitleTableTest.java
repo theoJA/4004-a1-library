@@ -11,6 +11,8 @@ public class TitleTableTest {
 
 	private String testISBN = "9781442616899";
 	private String testBookTitle = "Dante's lyric poetry";
+	private String newTestISBN = "9999999999999";
+	private String newTestBookTitle = "Programming for Dummies"; 
 	
 	// Assigning the address in memory of instance of TitleTable to a variable
 	private TitleTable testTitleTable = TitleTable.getInstance();
@@ -34,6 +36,18 @@ public class TitleTableTest {
 	public void test_lookupByISBN() {
 		assertTrue(testTitleTable.lookup(testISBN));
 		assertFalse(testTitleTable.lookup("1234567890123"));
+	}
+	
+	@Test
+	public void test_createTitle() {
+		// Should return true when a title is successfully created and added to the title list
+		assertTrue(testTitleTable.createTitle(newTestISBN, newTestBookTitle));
+		// Checking to see if created title is indeed in the list
+		assertEquals(newTestISBN, testTitleTable.getTitleList().get(testTitleTable.getTitleList().size()).getISBN());
+		assertEquals(newTestBookTitle, testTitleTable.getTitleList().get(testTitleTable.getTitleList().size()).getBookTitle());
+				
+		// Should return false when given title info exists in the title list
+		assertFalse(testTitleTable.createTitle(testISBN, testBookTitle));
 	}
 	
 
