@@ -43,8 +43,8 @@ public class TitleTableTest {
 		// Should return true when a title is successfully created and added to the title list
 		assertTrue(testTitleTable.createTitle(newTestISBN, newTestBookTitle));
 		// Checking to see if created title is indeed in the list
-		assertEquals(newTestISBN, testTitleTable.getTitleList().get(testTitleTable.getTitleList().size()).getISBN());
-		assertEquals(newTestBookTitle, testTitleTable.getTitleList().get(testTitleTable.getTitleList().size()).getBookTitle());
+		assertEquals(newTestISBN, testTitleTable.getTitleList().get(testTitleTable.getTitleList().size() - 1).getISBN());
+		assertEquals(newTestBookTitle, testTitleTable.getTitleList().get(testTitleTable.getTitleList().size() - 1).getBookTitle());
 				
 		// Should return false when given title info exists in the title list
 		assertFalse(testTitleTable.createTitle(testISBN, testBookTitle));

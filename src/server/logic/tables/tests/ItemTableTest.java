@@ -39,5 +39,15 @@ public class ItemTableTest {
 		assertFalse(testItemTable.lookup("1231231231231", "10"));
 	}
 	
+	@Test
+	public void test_createItem() {
+		System.out.println(testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getISBN());
+		// Should return true when a title is successfully created and added to the title list
+		//assertTrue(testItemTable.createItem(testISBN));
+		// Checking to see if created title is indeed in the list
+		//assertEquals(testISBN, testItemTable.getItemList().get(testItemTable.getItemList().size()).getISBN());
+		
+		//assertEquals(String.valueOf(testCopyNumber+1), testItemTable.getItemList().get(testItemTable.getItemList().size()).getCopyNumber());
+	}
 	
 }

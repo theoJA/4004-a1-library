@@ -52,4 +52,27 @@ public class ItemTable {
 		}
 		return result;
 	}
+    
+    public boolean createItem(String ISBN) {
+		boolean result=true;
+		result=TitleTable.getInstance().lookup(ISBN);
+		if(result){
+		int flag=0;
+		for(int i=0;i<itemList.size();i++){
+			if(itemList.get(i).getISBN().equalsIgnoreCase(ISBN)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;
+			}
+		}
+		Item newitem=new Item(itemList.size(),ISBN,String.valueOf(flag+1));
+		itemList.add(newitem);
+		System.out.println(newitem.getCopyNumber());
+		//logger.info(String.format("Operation:Create New Item;Item Info:[%s,%s];State:Success", string,String.valueOf(flag+1)));
+		}else{
+			result=false;
+			//logger.info(String.format("Operation:Create New Item;Item Info:[%s,%s];State:Fail;Reason:No such ISBN existed.", string,"N/A"));
+		}
+		return result;
+	}
 }
