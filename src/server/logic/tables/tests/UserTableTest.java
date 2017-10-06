@@ -36,14 +36,17 @@ public class UserTableTest {
 	
 	@Test
 	public void test_checkUserExists() {
-		assertEquals("User exists.", testUserTable.checkUserExists(testUsername, testPassword));
-		assertEquals("User does not exist.", testUserTable.checkUserExists(testUsername + "typo", testPassword));
-		assertEquals("Password does not match.", testUserTable.checkUserExists(testUsername, testPassword + "typo"));
+		assertEquals(0, testUserTable.checkUserExists(testUsername, testPassword));
+		assertEquals(2, testUserTable.checkUserExists(testUsername + "typo", testPassword));
+		assertEquals(1, testUserTable.checkUserExists(testUsername, testPassword + "typo"));
 	}
 
 	@Test
 	public void test_lookupByUsername() {
+		// True when user user name exists in the user list
 		assertEquals(testUserId, testUserTable.lookup(testUsername));
+		// False when user name does not exist in the user list
+		assertEquals(-1, testUserTable.lookup("noName"));
 	}
 	
 	@Test

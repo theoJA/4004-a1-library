@@ -41,13 +41,16 @@ public class ItemTableTest {
 	
 	@Test
 	public void test_createItem() {
-		System.out.println(testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getISBN());
 		// Should return true when a title is successfully created and added to the title list
-		//assertTrue(testItemTable.createItem(testISBN));
-		// Checking to see if created title is indeed in the list
-		//assertEquals(testISBN, testItemTable.getItemList().get(testItemTable.getItemList().size()).getISBN());
+		assertTrue(testItemTable.createItem(testISBN));
 		
-		//assertEquals(String.valueOf(testCopyNumber+1), testItemTable.getItemList().get(testItemTable.getItemList().size()).getCopyNumber());
+		// Checking to see if created item was recently added into the list
+		assertEquals(testISBN, testItemTable.getItemList().get(testItemTable.getItemList().size() - 1).getISBN());
+		
+		// Checking to see if the created item's copy number was incremented
+		int newCopyNumber = Integer.parseInt(testCopyNumber) + 1;
+		assertEquals(String.valueOf(newCopyNumber), testItemTable.getItemList().get(testItemTable.getItemList().size() - 1).getCopyNumber());
 	}
+	
 	
 }

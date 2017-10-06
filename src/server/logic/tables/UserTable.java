@@ -29,8 +29,8 @@ public class UserTable {
 		return userList;
 	}
     
-    public String checkUserExists(String username, String password) {
-		String result="";
+    public int checkUserExists(String username, String password) {
+		int result=0;
 		int flag=0;
 		int index=0;
 		for(int i=0;i<userList.size();i++){
@@ -43,11 +43,11 @@ public class UserTable {
 		}
 		boolean userPassword=userList.get(index).getPassword().equalsIgnoreCase(password);
 		if(flag!=0 && userPassword){
-			result="User exists.";
+			result=0; // User exists!
 		}else if(flag==0){
-			result="User does not exist.";
+			result=2; // User does not exist!
 		}else if(userPassword==false){
-			result="Password does not match.";
+			result=1; // Password does not match!
 		}
 		return result;
 	}
