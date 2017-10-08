@@ -77,4 +77,5 @@ public class FeeTableTest {
 		assertFalse(testFeeTable.lookup(testUserId_0));
 	}
 
+	
 }
