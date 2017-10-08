@@ -30,7 +30,7 @@ public class LoanTable {
         return LoanListCollection.INSTANCE;
     }
     
-    public List<Loan> getLoanTable() {
+    public List<Loan> getLoanList() {
 		return loanList;
 	}
 }

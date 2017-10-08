@@ -30,7 +30,7 @@ public class FeeTable {
     };
     
     public void Initialization(){
-    	List<Loan> loanList=LoanTable.getInstance().getLoanTable();
+    	List<Loan> loanList=LoanTable.getInstance().getLoanList();
     	for(int i=0;i<loanList.size();i++){
     		applyfee(loanList.get(i).getUserId(), new Date().getTime()-loanList.get(i).getDate().getTime());
     	}

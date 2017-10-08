@@ -24,7 +24,7 @@ public class LoanTest {
 	
 	@Test
 	public void test_getCopies() {
-		assertEquals("2", testLoan.getCopies());
+		assertEquals("2", testLoan.getCopyNumber());
 	}
 	
 	@Test

@@ -41,7 +41,7 @@ public class Loan {
 	public String getISBN() {
 		return ISBN;
 	}
-	public String getCopies() {
+	public String getCopyNumber() {
 		return copyNumber;
 	}
 	public Date getDate() {
