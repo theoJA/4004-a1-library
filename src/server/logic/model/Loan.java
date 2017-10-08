@@ -5,14 +5,14 @@ import java.util.Date;
 public class Loan {
 	int userId;
 	String ISBN;
-	int copies;
+	String copyNumber;
 	Date date;
 	String renewState;
 	
-	public Loan(int userId, String ISBN, int copies, Date date, String renewState) {
+	public Loan(int userId, String ISBN, String copyNumber, Date date, String renewState) {
 		this.setUserId(userId);
 		this.setISBN(ISBN);
-		this.setCopies(copies);
+		this.setCopyNumber(copyNumber);
 		this.setDate(date);
 		this.setRenewState(renewState);
 	}
@@ -24,8 +24,8 @@ public class Loan {
 	private void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
-	private void setCopies(int copies) {
-		this.copies = copies;
+	private void setCopyNumber(String copyNumber) {
+		this.copyNumber = copyNumber;
 	}
 	private void setDate(Date date) {
 		this.date = date;
@@ -41,8 +41,8 @@ public class Loan {
 	public String getISBN() {
 		return ISBN;
 	}
-	public int getCopies() {
-		return copies;
+	public String getCopies() {
+		return copyNumber;
 	}
 	public Date getDate() {
 		return date;

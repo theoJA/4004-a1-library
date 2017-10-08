@@ -10,7 +10,7 @@ import java.util.Date;
 public class LoanTest {
 
 	Date testDate = new Date();
-	private Loan testLoan = new Loan(123, "1234567890123", 2, testDate, "RETURNED");
+	private Loan testLoan = new Loan(123, "1234567890123", "2", testDate, "RETURNED");
 	
 	@Test
 	public void test_getUserId() {
@@ -24,7 +24,7 @@ public class LoanTest {
 	
 	@Test
 	public void test_getCopies() {
-		assertEquals(2, testLoan.getCopies());
+		assertEquals("2", testLoan.getCopies());
 	}
 	
 	@Test

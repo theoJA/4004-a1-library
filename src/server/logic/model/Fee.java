@@ -10,10 +10,10 @@ public class Fee {
 	}
 	
 	// setters
-	private void setUserId(int userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	private void setFee(double fee) {
+	public void setFee(double fee) {
 		this.fee = fee;
 	}
 	//
