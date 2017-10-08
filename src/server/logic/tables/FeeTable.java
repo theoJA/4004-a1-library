@@ -41,6 +41,10 @@ public class FeeTable {
         return FeeListCollection.INSTANCE;
     }
     
+    public List<Fee> getFeeList() {
+		return feeList;
+	}
+    
     public void applyfee(int userId, long time) {
 		int flag=0;
 		int index=0;
@@ -74,4 +78,5 @@ public class FeeTable {
 			}
 		}
     }
+    
 }

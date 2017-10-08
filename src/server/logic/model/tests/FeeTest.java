@@ -7,7 +7,7 @@ import server.logic.model.Fee;
 
 public class FeeTest {
 
-	private Fee testFee = new Fee(12, 23.50);
+	private Fee testFee = new Fee(12, 23);
 	
 	@Test
 	public void test_getUserId() {
@@ -16,7 +16,7 @@ public class FeeTest {
 
 	@Test
 	public void test_getFee() {
-		assertEquals(23.50, testFee.getFee(), 0);
+		assertEquals(23, testFee.getFee(), 0);
 	}
 	
 }
