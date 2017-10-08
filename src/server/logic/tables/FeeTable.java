@@ -32,7 +32,7 @@ public class FeeTable {
     public void Initialization(){
     	List<Loan> loanList=LoanTable.getInstance().getLoanList();
     	for(int i=0;i<loanList.size();i++){
-    		applyfee(loanList.get(i).getUserId(), new Date().getTime()-loanList.get(i).getDate().getTime());
+    		applyFee(loanList.get(i).getUserId(), new Date().getTime()-loanList.get(i).getDate().getTime());
     	}
     	//logger.info(String.format("Operation:Initialize FeeTable;FeeTable: %s", feeList));
 	}
@@ -45,7 +45,7 @@ public class FeeTable {
 		return feeList;
 	}
     
-    public void applyfee(int userId, long time) {
+    public void applyFee(int userId, long time) { // time is in milliseconds
 		int flag=0;
 		int index=0;
 		for(int i = 0;i<feeList.size();i++){

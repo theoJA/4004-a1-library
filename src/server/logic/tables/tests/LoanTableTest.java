@@ -36,6 +36,8 @@ public class LoanTableTest {
 		assertEquals(testCopyNumber, testLoanTable.getLoanList().get(testUserId).getCopyNumber());
 		//assertEquals(testDate, testLoanTable.getLoanList().get(testUserId).getDate());
 		assertEquals(testRenewState, testLoanTable.getLoanList().get(testUserId).getRenewState());
+		
+		System.out.println(testLoanTable.getLoanList().get(testUserId).getDate());
 	}
 	
 }
