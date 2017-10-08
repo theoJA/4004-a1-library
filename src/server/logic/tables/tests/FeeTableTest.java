@@ -44,6 +44,10 @@ public class FeeTableTest {
 	@Test
 	public void test_applyFee() {
 		// userId 0 has an existing fee of $5 in the list
+		// userId 0 has only borrowed for 3 days so they don't receive any fee. Therefore the fee should still be $5
+		testFeeTable.applyFee(0, 180000);
+		assertEquals(testFee_0, testFeeTable.getFeeList().get(testUserId_0).getFee());
+		System.out.println(testFeeTable.getFeeList().get(testUserId_0).getFee());
 		// If we apply a new fee of 9 days overdue to userId 0, the user should be charged with $9 fee ($5 + $4) since after 5 days,
 		//	 its $1 for every additional day
 		testFeeTable.applyFee(0, 540000);
@@ -51,12 +55,26 @@ public class FeeTableTest {
 		System.out.println(testFeeTable.getFeeList().get(testUserId_0).getFee());
 		
 		// now userId 1 is not initialized in the list in FeeTable(). Therefore, this user will begin with an initial fee of $0
+		// userId 1 has only borrowed for 4 days so they don't receive any fee. Therefore the fee should still be $0
+		testFeeTable.applyFee(0, 240000);
+		assertEquals(testFee_1, testFeeTable.getFeeList().get(testUserId_1).getFee());
+		System.out.println(testFeeTable.getFeeList().get(testUserId_1).getFee());
 		// After 5 days, userId 1 will be charged $1 for every additional day. Therefore, after 9 days, userId 1 should be charged with $4
 		testFeeTable.applyFee(1, 540000);
 		assertEquals(newTestFee_1, testFeeTable.getFeeList().get(testUserId_1).getFee());
 		System.out.println(testFeeTable.getFeeList().get(testUserId_1).getFee());
 	}
 	
-	
+	@Test
+	public void test_lookupForNoFees() {
+		// user doesn't exist so no fees, should be true
+		assertTrue(testFeeTable.lookup(6));
+		
+		// userId 1 should not exists in the list since this test is independent from the applyFee test
+		assertTrue(testFeeTable.lookup(testUserId_1));
+		
+		// user exists, and has fee, should be false
+		assertFalse(testFeeTable.lookup(testUserId_0));
+	}
 
 }

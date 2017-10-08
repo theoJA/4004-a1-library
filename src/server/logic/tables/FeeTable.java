@@ -56,30 +56,71 @@ public class FeeTable {
 			}
 		}
 		int currFee=(int) ((time/(Config.STIMULATED_DAY))-Config.OVERDUE);
-		// If passed in userId exists in the fee list, add currFee to the existing fee
+		// If userId exists in the fee list, add currFee to the existing fee
 		if(flag!=0){
-			if(currFee>=0){ // if currFee >= 0, add currFee to existing fee
+			// the existing userId's loan has gone past 5 days
+			if(currFee>=0){ 
 				feeList.get(index).setFee(currFee+feeList.get(index).getFee());
 				feeList.get(index).setUserId(userId);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
-			}else{	// if no fee at all?  
+			}else{	
+				// the existing userId's loan hasn't gone past 5 days
 				feeList.get(index).setFee(feeList.get(index).getFee());
 				feeList.get(index).setUserId(userId);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
 			}
-		// If userId doesn't exist in the fee list, we add a new fee to it
+		// If userId doesn't exist in the fee list, we add that userId and a new fee to it
 		}else{
-			if(currFee>=0){	// add new currFee to the list
+			// add new userId to the list, and the corresponding accrued fee (loan has gone past 5 days)
+			if(currFee>=0){	
 				Fee newFee=new Fee(userId,currFee);
 				feeList.add(newFee);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,currFee));
-			}else{	// add the userId that doesn't exist to the fee list. This is to ensure that the userId exist in the list but hasn't gotten any
-					// 	fees yet. This just makes it easier to add new fees to this specific userId?
+			}else{	
+				// add new userId and a fee of $0 (this is for loans that hasn't gone beyond 5 days) 
 				Fee fee=new Fee(userId,0);
 				feeList.add(fee);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,0));
 			}
 		}
     }
+    
+    // this method is private but is used in the lookup methods
+    private boolean checkUserExists(int userId) {
+		boolean result=true;
+		int fee = 0;
+		for(int i=0;i<feeList.size();i++){
+			int userIdFromList=(feeList.get(i)).getUserId();
+			if(userIdFromList==userId){
+				fee=fee+1;
+			}else{
+				fee=fee+0;
+			}
+		}	
+		if(fee==0){
+			result=false;
+		}
+		return result;
+	}
+    
+    public boolean lookup(int userId) {
+		boolean result=true;
+		int fee = 0;
+		boolean user=FeeTable.getInstance().checkUserExists(userId);
+		if(user){
+			for(int i=0;i<feeList.size();i++){
+				int userIdFromList=(feeList.get(i)).getUserId();
+				if(userIdFromList==userId){
+					fee=fee+feeList.get(i).getFee();
+				}
+			}	
+		}else{	// user doesn't exist, so no fee, thus true
+			fee=0;
+		}
+		if(fee!=0){
+			result=false; // fee exists?
+		}
+		return result;
+	}
     
 }
