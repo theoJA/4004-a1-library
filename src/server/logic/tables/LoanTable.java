@@ -19,8 +19,10 @@ public class LoanTable {
     
     private LoanTable(){
     	//set up the default list with some instances
-    	Loan loan=new Loan(0,"9781442668584","1",new Date(),"0");
-    	loanList.add(loan);
+    	Loan loan0 = new Loan(0,"9781442668584","1",new Date(),"0");
+    	loanList.add(loan0);
+    	Loan loan1 = new Loan(1,"9781442667181","1",new Date(),"0");
+    	loanList.add(loan1);
     	//logger.info(String.format("Operation:Initialize LoanTable;LoanTable: %s", loanList));
     };
     

@@ -32,5 +32,6 @@ public class FeeTableTest {
 		assertEquals(testFee, testFeeTable.getFeeList().get(testUserId).getFee());
 	}
 	
+	
 
 }

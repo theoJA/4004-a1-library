@@ -56,22 +56,25 @@ public class FeeTable {
 			}
 		}
 		int currFee=(int) ((time/(Config.STIMULATED_DAY))-Config.OVERDUE);
+		// If passed in userId exists in the fee list, add currFee to the existing fee
 		if(flag!=0){
-			if(currFee>=0){
+			if(currFee>=0){ // if currFee >= 0, add currFee to existing fee
 				feeList.get(index).setFee(currFee+feeList.get(index).getFee());
 				feeList.get(index).setUserId(userId);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
-			}else{
+			}else{	// if no fee at all?  
 				feeList.get(index).setFee(feeList.get(index).getFee());
 				feeList.get(index).setUserId(userId);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
 			}
+		// If userId doesn't exist in the fee list, we add a new fee to it
 		}else{
-			if(currFee>=0){
+			if(currFee>=0){	// add new currFee to the list
 				Fee newFee=new Fee(userId,currFee);
 				feeList.add(newFee);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,currFee));
-			}else{
+			}else{	// add the userId that doesn't exist to the fee list. This is to ensure that the userId exist in the list but hasn't gotten any
+					// 	fees yet. This just makes it easier to add new fees to this specific userId?
 				Fee fee=new Fee(userId,0);
 				feeList.add(fee);
 				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,0));
