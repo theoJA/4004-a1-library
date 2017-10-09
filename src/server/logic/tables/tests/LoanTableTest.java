@@ -52,5 +52,11 @@ public class LoanTableTest {
 		assertTrue(testLoanTable.lookup(1, testISBN + "typo", testCopyNumber));
 	}
 	
+	@Test
+	public void test_checkUser() {
+		assertFalse(testLoanTable.checkUser(testUserId));
+		assertTrue(testLoanTable.checkUser(2));
+	}
+	
 	
 }
