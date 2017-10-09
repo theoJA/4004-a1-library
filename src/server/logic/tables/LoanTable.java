@@ -1,5 +1,7 @@
 package server.logic.tables;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +42,47 @@ public class LoanTable {
 		for(int i=0;i<loanList.size();i++){
 			int userIdFromList=(loanList.get(i)).getUserId();
 			if(userIdFromList==userId){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
+    
+    public boolean lookup(int j, String ISBN, String copyNumber) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			String ISBNfromList=(loanList.get(i)).getISBN();
+			String copynumberFromList=(loanList.get(i)).getCopyNumber();
+			if(ISBNfromList.equalsIgnoreCase(ISBN) && copynumberFromList.equalsIgnoreCase(copyNumber)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
+    
+    private String dateformat(Date date){
+		DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		String datestr=format1.format(date);
+		return datestr;
+	}
+    
+    public boolean checkUser(int userId) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			int useridFromList=(loanList.get(i)).getUserId();
+			if(useridFromList==userId){
 				flag=flag+1;
 			}else{
 				flag=flag+0;	

@@ -45,4 +45,12 @@ public class LoanTableTest {
 		assertFalse(testLoanTable.lookLimit(0));
 		assertTrue(testLoanTable.lookLimit(4));
 	}
+	
+	@Test
+	public void test_lookupISBNcopyNumber() {
+		assertFalse(testLoanTable.lookup(1, testISBN, testCopyNumber));
+		assertTrue(testLoanTable.lookup(1, testISBN + "typo", testCopyNumber));
+	}
+	
+	
 }
