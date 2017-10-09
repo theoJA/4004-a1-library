@@ -37,7 +37,13 @@ public class LoanTableTest {
 		//assertEquals(testDate, testLoanTable.getLoanList().get(testUserId).getDate());
 		assertEquals(testRenewState, testLoanTable.getLoanList().get(testUserId).getRenewState());
 		
-		System.out.println(testLoanTable.getLoanList().get(testUserId).getDate());
+		//System.out.println(testLoanTable.getLoanList().get(testUserId).getDate());
+	}
+	
+	@Test
+	public void test_lookLimit() {
+		assertFalse(testLoanTable.lookLimit(testUserId));
+		assertTrue(testLoanTable.lookLimit(4));
 	}
 	
 }

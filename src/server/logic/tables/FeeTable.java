@@ -123,4 +123,20 @@ public class FeeTable {
 		return result;
 	}
     
+    public Object lookupfee(int userId) {
+		int fee=0;
+		boolean user=FeeTable.getInstance().checkUserExists(userId);
+		if(user){
+		for(int i=0;i<feeList.size();i++){
+			int userIdFromList=(feeList.get(i)).getUserId();
+			if(userIdFromList==userId){
+				fee=fee+feeList.get(i).getFee();
+			}
+		}
+		}else{
+			fee=0;
+		}
+		return fee;
+	}
+    
 }

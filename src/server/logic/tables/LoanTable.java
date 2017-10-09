@@ -33,4 +33,21 @@ public class LoanTable {
     public List<Loan> getLoanList() {
 		return loanList;
 	}
+    
+    public boolean lookLimit(int userId) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			int userIdFromList=(loanList.get(i)).getUserId();
+			if(userIdFromList==userId){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
 }

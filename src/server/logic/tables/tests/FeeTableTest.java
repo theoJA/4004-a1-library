@@ -56,7 +56,7 @@ public class FeeTableTest {
 		
 		// now userId 1 is not initialized in the list in FeeTable(). Therefore, this user will begin with an initial fee of $0
 		// userId 1 has only borrowed for 4 days so they don't receive any fee. Therefore the fee should still be $0
-		testFeeTable.applyFee(0, 240000);
+		testFeeTable.applyFee(1, 240000);
 		assertEquals(testFee_1, testFeeTable.getFeeList().get(testUserId_1).getFee());
 		System.out.println(testFeeTable.getFeeList().get(testUserId_1).getFee());
 		// After 5 days, userId 1 will be charged $1 for every additional day. Therefore, after 9 days, userId 1 should be charged with $4
@@ -77,5 +77,12 @@ public class FeeTableTest {
 		assertFalse(testFeeTable.lookup(testUserId_0));
 	}
 
+	@Test
+	public void test_lookUpFee() {
+		assertEquals(9, testFeeTable.lookupfee(testUserId_0));
+		assertEquals(4, testFeeTable.lookupfee(testUserId_1));
+	}
+	
+	
 	
 }
