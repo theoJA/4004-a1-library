@@ -16,4 +16,8 @@ public class Output {
 	public int getState() {
 		return state;
 	}
+	
+	public void setOutput(String output) {
+		this.output = output;
+	}
 }

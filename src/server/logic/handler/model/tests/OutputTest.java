@@ -18,4 +18,10 @@ public class OutputTest {
 	public void test_getState() {
 		assertEquals("newOutput", testOutput.getOutput());
 	}
+	
+	@Test
+	public void test_setOutput() {
+		testOutput.setOutput("freshOutput");
+		assertEquals("freshOutput", testOutput.getOutput());
+	}
 }
