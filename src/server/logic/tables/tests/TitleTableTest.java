@@ -50,5 +50,11 @@ public class TitleTableTest {
 		assertFalse(testTitleTable.createTitle(testISBN, testBookTitle));
 	}
 	
-
+	@Test
+	public void test_delete() {
+		assertEquals("Active Loan Exists", testTitleTable.delete("9781442668584"));
+		assertEquals("The Title Does Not Exist", testTitleTable.delete("9781442668584909"));
+		assertEquals("success", testTitleTable.delete("9781611687910"));
+	}
+	
 }
