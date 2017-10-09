@@ -100,5 +100,48 @@ public class UserTable {
 		}
 		return result;	
 	}
+    
+    public Object delete(int userId) {
+		//Since the userid in "User Creation" is automatically assigned to the user,upon its creation.
+		//Each user has a unique userid.Even it is deleted,its userid can not be assigned to other user.
+		//To maintain the correctness of the data,here instead delete index from the List.
+		//I choose to remove the user's information instead the whole index.Keep its userid as reference.
+		String result="";
+		boolean loan=LoanTable.getInstance().checkUser(userId);
+		int flag=0;
+		int index=0;
+		for(int j=0;j<userList.size();j++){
+			if(userList.get(j).getUserId()==userId){
+				index=j;
+				flag=flag+1;
+			}else{
+				flag=flag+0;
+			}
+		}
+		
+		if(flag==0){
+			result="The User Does Not Exist";
+			//logger.info(String.format("Operation:Delete User;User Info:[%s,%s];State:Fail;Reason:The User Does Not Exist.", "N/A","N/A"));
+		}else{
+			boolean fee=FeeTable.getInstance().lookup(userId);
+			String string=userList.get(index).getUsername();
+			String string2=userList.get(index).getPassword();
+			if(fee && loan){
+				userList.get(index).setUserId(userId);
+				userList.get(index).setPassword("N/A");
+				userList.get(index).setUsername("N/A");
+				result="success";
+				//logger.info(String.format("Operation:Delete User;User Info:[%s,%s];State:Success", string,string2));
+			}else if(fee==false){
+				result="Outstanding Fee Exists";
+				//logger.info(String.format("Operation:Delete User;User Info:[%s,%s];State:Fail;Reason:Outstanding Fee Exists.", string,string2));
+			}else if(loan==false){
+				result="Active Loan Exists";
+				//logger.info(String.format("Operation:Delete User;User Info:[%s,%s];State:Fail;Reason:Active Loan Exists.", string,string2));
+			}
+		}
+		return result;
+
+	}
 
 }

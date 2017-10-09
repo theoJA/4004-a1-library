@@ -70,4 +70,14 @@ public class UserTableTest {
 		assertFalse(testUserTable.createUser(testUsername, testPassword));
 	}
 	
+	@Test
+	public void test_delete() {
+		assertEquals("The User Does Not Exist", testUserTable.delete(10));
+		assertEquals("Outstanding Fee Exists", testUserTable.delete(0));
+		assertEquals("Active Loan Exists",testUserTable.delete(1));
+		
+		testUserTable.createUser("new@user.com", "new");
+		assertEquals("success", testUserTable.delete(testUserTable.getInstance().getUserList().size() - 1));
+	}
+	
 }

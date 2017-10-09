@@ -12,13 +12,13 @@ public class User {
 	}
 	
 	// Making the setter methods private so only the user class can set the member variables
-	private void setUserId(int userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	private void setPassword(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
-	private void setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	//
