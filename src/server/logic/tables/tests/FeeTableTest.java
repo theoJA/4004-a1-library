@@ -5,10 +5,13 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.Test;
+//import org.junit.FixMethodOrder;
+//import org.junit.runners.MethodSorters;
 
 import server.logic.model.Fee;
 import server.logic.tables.FeeTable;
 
+//@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FeeTableTest {
 
 	// This user has been initialized during FeeTable()
@@ -83,6 +86,9 @@ public class FeeTableTest {
 		assertEquals(4, testFeeTable.lookupfee(testUserId_1));
 	}
 	
-	
+	@Test
+	public void test_payFine() {		
+		assertEquals("Borrowing Items Exist", testFeeTable.payFine(1));
+	}
 	
 }

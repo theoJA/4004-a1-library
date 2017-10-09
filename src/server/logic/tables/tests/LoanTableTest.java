@@ -42,7 +42,7 @@ public class LoanTableTest {
 	
 	@Test
 	public void test_lookLimit() {
-		assertFalse(testLoanTable.lookLimit(testUserId));
+		assertFalse(testLoanTable.lookLimit(0));
 		assertTrue(testLoanTable.lookLimit(4));
 	}
 }
