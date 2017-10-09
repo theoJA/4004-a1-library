@@ -45,5 +45,4 @@ public class LoanTableTest {
 		assertFalse(testLoanTable.lookLimit(testUserId));
 		assertTrue(testLoanTable.lookLimit(4));
 	}
-	
 }
