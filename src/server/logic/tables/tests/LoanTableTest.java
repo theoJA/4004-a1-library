@@ -58,5 +58,12 @@ public class LoanTableTest {
 		assertTrue(testLoanTable.checkUser(2));
 	}
 	
+	@Test
+	public void test_checkLoanISBNcopyNumber() {
+		assertFalse(testLoanTable.checkLoan(testISBN,testCopyNumber));
+		assertTrue(testLoanTable.checkLoan(testISBN+"type",testCopyNumber));
+		assertTrue(testLoanTable.checkLoan(testISBN,testCopyNumber+"typo"));
+	}
+	
 	
 }

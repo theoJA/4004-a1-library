@@ -93,4 +93,39 @@ public class LoanTable {
 		}
 		return result;
 	}
+    
+    public boolean checkLoan(String ISBN, String copyNumber) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			String ISBNfromList=(loanList.get(i)).getISBN();
+			String copynumberFromList=(loanList.get(i)).getCopyNumber();
+			if(ISBNfromList.equalsIgnoreCase(ISBN) && copynumberFromList.equalsIgnoreCase(copyNumber)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
+    
+    public boolean checkLoan(String ISBN) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			String ISBNfromList=(loanList.get(i)).getISBN();
+			if(ISBNfromList.equalsIgnoreCase(ISBN)){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
 }
