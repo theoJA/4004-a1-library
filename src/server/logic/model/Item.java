@@ -11,14 +11,14 @@ public class Item {
 		this.setCopyNumber(copyNumber);
 	}
 	
-	// Private setters for Item class
-	private void setItemId(int itemId) {
+	// setters for Item class
+	public void setItemId(int itemId) {
 		this.itemId = itemId;
 	}	
-	private void setISBN(String ISBN) {
+	public void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
-	private void setCopyNumber(String copyNumber) {
+	public void setCopyNumber(String copyNumber) {
 		this.copyNumber = copyNumber;
 	}
 	//

@@ -52,5 +52,18 @@ public class ItemTableTest {
 		assertEquals(String.valueOf(newCopyNumber), testItemTable.getItemList().get(testItemTable.getItemList().size() - 1).getCopyNumber());
 	}
 	
+	@Test
+	public void test_delete() {
+		assertEquals("Active Loan Exists", testItemTable.delete(testISBN, testCopyNumber));
+		assertEquals("The Item Does Not Exist", testItemTable.delete(testISBN+"typo", testCopyNumber));
+		assertEquals("success", testItemTable.delete("9781611687910", testCopyNumber));
+	}
+	
+	@Test
+	public void test_deleteAll() {
+		testItemTable.deleteAll("9781442616899");
+		assertEquals("N/A", testItemTable.getItemList().get(1).getISBN());
+		assertEquals("N/A", testItemTable.getItemList().get(1).getCopyNumber());
+	}
 	
 }

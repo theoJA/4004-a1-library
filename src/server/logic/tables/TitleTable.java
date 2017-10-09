@@ -70,4 +70,35 @@ public class TitleTable {
 		}
 		return result;	
 	}
+    
+    public Object delete(String ISBN) {
+		String result="";
+		int index=0;
+		int flag=0;
+		for(int i=0;i<titleList.size();i++){
+			if(titleList.get(i).getISBN().equalsIgnoreCase(ISBN)){
+				flag=flag+1;
+				index=i;
+			}else{
+				flag=flag+0;
+			}
+		}
+		if(flag!=0){
+			boolean loan=LoanTable.getInstance().checkLoan(ISBN);
+			if(loan){
+				String string2=titleList.get(index).getBookTitle();
+				ItemTable.getInstance().deleteAll(ISBN);
+				titleList.remove(index);
+				result="success";
+				//logger.info(String.format("Operation:Delete Title;Title Info:[%s,%s];State:Success", string,string2));
+			}else{
+				result="Active Loan Exists";
+				//logger.info(String.format("Operation:Delete Title;ISBN Info:[%s];State:Fail;Reason:Active Loan Exists.", string));
+			}
+		}else{
+			result="The Title Does Not Exist";
+			//logger.info(String.format("Operation:Delete Title;ISBN Info:[%s];State:Fail;Reason:The Title Does Not Exist.", string));
+		}
+		return result;
+	}
 }
