@@ -20,4 +20,8 @@ public class Output {
 	public void setOutput(String output) {
 		this.output = output;
 	}
+	
+	public void setState(int state) {
+		this.state = state;
+	}
 }

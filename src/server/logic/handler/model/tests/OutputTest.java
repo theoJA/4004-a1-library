@@ -16,12 +16,18 @@ public class OutputTest {
 
 	@Test
 	public void test_getState() {
-		assertEquals("newOutput", testOutput.getOutput());
+		assertEquals(1, testOutput.getState());
 	}
 	
 	@Test
 	public void test_setOutput() {
 		testOutput.setOutput("freshOutput");
 		assertEquals("freshOutput", testOutput.getOutput());
+	}
+	
+	@Test
+	public void test_setState() {
+		testOutput.setState(2);
+		assertEquals(2, testOutput.getState());
 	}
 }
