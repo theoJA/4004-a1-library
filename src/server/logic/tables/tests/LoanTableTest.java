@@ -2,7 +2,7 @@ package server.logic.tables.tests;
 
 import static org.junit.Assert.*;
 
-//import java.util.Date;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -15,7 +15,7 @@ public class LoanTableTest {
 	private int testUserId = 1;
 	private String testISBN = "9781442667181";
 	private String testCopyNumber = "1";
-	//private Date testDate = new Date();
+	private Date testDate = new Date();
 	private String testRenewState = "0";
 	
 	// Assigning the address in memory of instance of LoanTable to a variable
@@ -74,5 +74,17 @@ public class LoanTableTest {
 	@Test
 	public void test_checkLimit() {
 		assertTrue(testLoanTable.checkLimit(testUserId));
+	}
+	
+	@Test
+	public void test_createLoan() {
+		assertEquals("User Invalid",testLoanTable.createLoan(10, testISBN, testCopyNumber, testDate));
+		assertEquals("ISBN Invalid",testLoanTable.createLoan(testUserId, testISBN+"typo", testCopyNumber, testDate));
+		assertEquals("Copynumber Invalid",testLoanTable.createLoan(testUserId, testISBN, testCopyNumber+"typo", testDate));
+		assertEquals("The Item is Not Available",testLoanTable.createLoan(2, testISBN, testCopyNumber, testDate));
+		assertEquals("Outstanding Fee Exists", testLoanTable.createLoan(0, "9781611687910", testCopyNumber, testDate));
+		assertEquals("success",testLoanTable.createLoan(1, "9781317594277", testCopyNumber, testDate));
+		assertEquals("success", testLoanTable.createLoan(1, "9781442616899", testCopyNumber, testDate));
+		assertEquals("The Maximun Number of Items is Reached", testLoanTable.createLoan(1, "9781317594277", "2", testDate));
 	}
 }

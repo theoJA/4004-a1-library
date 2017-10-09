@@ -18,8 +18,8 @@ public class ItemTable {
     
     private ItemTable(){
     	//set up the default list with some instances
-    	String[] ISBNList=new String[]{"9781442668584","9781442616899","9781442667181","9781611687910"};
-    	String[] copiesList=new String[]{"1","1","1","1"};
+    	String[] ISBNList=new String[]{"9781442668584","9781442616899","9781442667181","9781611687910","9781317594277","9781317594277"};
+    	String[] copiesList=new String[]{"1","1","1","1","1","2"};
     	for(int i=0;i<ISBNList.length;i++){
 			Item newItem=new Item(i,ISBNList[i],copiesList[i]);
 			itemList.add(newItem);
