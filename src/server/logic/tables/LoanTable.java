@@ -10,6 +10,7 @@ import java.util.List;
 
 import server.logic.model.Loan;
 //import utilities.Trace;
+import utilities.Config;
 
 public class LoanTable {
 	//private Logger logger = Trace.getInstance().getLogger("opreation_file");
@@ -124,6 +125,23 @@ public class LoanTable {
 			}
 		}
 		if(flag!=0){
+			result=false;
+		}
+		return result;
+	}
+    
+    public boolean checkLimit(int userId) {
+		boolean result=true;
+		int flag=0;
+		for(int i=0;i<loanList.size();i++){
+			int useridFromList=(loanList.get(i)).getUserId();
+			if(useridFromList==userId){
+				flag=flag+1;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag>=Config.MAX_BORROWED_ITEMS){
 			result=false;
 		}
 		return result;

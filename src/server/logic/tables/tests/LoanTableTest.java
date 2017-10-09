@@ -70,4 +70,9 @@ public class LoanTableTest {
 		assertFalse(testLoanTable.checkLoan(testISBN));
 		assertTrue(testLoanTable.checkLoan(testISBN+"typo"));
 	}
+	
+	@Test
+	public void test_checkLimit() {
+		assertTrue(testLoanTable.checkLimit(testUserId));
+	}
 }
