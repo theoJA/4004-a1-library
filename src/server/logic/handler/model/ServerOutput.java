@@ -17,4 +17,8 @@ public class ServerOutput {
 		return state;
 	}
 	
+	public void setOutput(String output) {
+		this.output = output;
+	}
+	
 }
