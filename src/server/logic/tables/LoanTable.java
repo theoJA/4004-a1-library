@@ -185,4 +185,35 @@ public class LoanTable {
 		}
     	return result;
 	}
+    
+    public Object returnItem(int userId, String ISBN, String copyNumber, Date date) {
+		String result="";
+		int flag=0;
+		int index=0;
+		for(int i=0;i<loanList.size();i++){
+			String ISBNfromList=(loanList.get(i)).getISBN();
+			String copynumberFromList=(loanList.get(i)).getCopyNumber();
+			int userid=(loanList.get(i)).getUserId();
+			if((userid==userId) && ISBNfromList.equalsIgnoreCase(ISBN) && copynumberFromList.equalsIgnoreCase(copyNumber)){
+				flag=flag+1;
+				index=i;
+			}else{
+				flag=flag+0;	
+			}
+		}
+		if(flag!=0){
+			long time = date.getTime()-loanList.get(index).getDate().getTime();
+			loanList.remove(index);
+			//logger.info(String.format("Operation:Return Item;Loan Info:[%d,%s,%s,%s];State:Success", j,string,string2,dateformat(date)));
+			if(time>Config.OVERDUE*Config.STIMULATED_DAY){
+				FeeTable.getInstance().applyFee(userId,time);
+			}
+			result="success";
+		}else{
+			result="The Loan Does Not Exist";
+			//logger.info(String.format("Operation:Return Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Loan Does Not Exist.", j,string,string2,dateformat(date)));
+		}
+		
+		return result;
+	}
 }

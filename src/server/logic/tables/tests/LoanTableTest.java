@@ -81,10 +81,17 @@ public class LoanTableTest {
 		assertEquals("User Invalid",testLoanTable.createLoan(10, testISBN, testCopyNumber, testDate));
 		assertEquals("ISBN Invalid",testLoanTable.createLoan(testUserId, testISBN+"typo", testCopyNumber, testDate));
 		assertEquals("Copynumber Invalid",testLoanTable.createLoan(testUserId, testISBN, testCopyNumber+"typo", testDate));
-		assertEquals("The Item is Not Available",testLoanTable.createLoan(2, testISBN, testCopyNumber, testDate));
+		assertEquals("The Item is Not Available",testLoanTable.createLoan(2, "9781442668584", testCopyNumber, testDate));
 		assertEquals("Outstanding Fee Exists", testLoanTable.createLoan(0, "9781611687910", testCopyNumber, testDate));
+		assertEquals("success",testLoanTable.createLoan(1, testISBN, testCopyNumber, testDate));
 		assertEquals("success",testLoanTable.createLoan(1, "9781317594277", testCopyNumber, testDate));
 		assertEquals("success", testLoanTable.createLoan(1, "9781442616899", testCopyNumber, testDate));
 		assertEquals("The Maximun Number of Items is Reached", testLoanTable.createLoan(1, "9781317594277", "2", testDate));
+	}
+	
+	@Test
+	public void test_returnItem() {
+		assertEquals("success", testLoanTable.returnItem(1, testISBN, testCopyNumber, testDate));
+		assertEquals("The Loan Does Not Exist", testLoanTable.returnItem(1, testISBN, testCopyNumber, testDate));
 	}
 }
