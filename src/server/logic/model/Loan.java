@@ -18,19 +18,19 @@ public class Loan {
 	}
 	
 	// Loan class setters
-	private void setUserId(int userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	private void setISBN(String ISBN) {
+	public void setISBN(String ISBN) {
 		this.ISBN = ISBN;
 	}
-	private void setCopyNumber(String copyNumber) {
+	public void setCopyNumber(String copyNumber) {
 		this.copyNumber = copyNumber;
 	}
-	private void setDate(Date date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
-	private void setRenewState(String renewState) {
+	public void setRenewState(String renewState) {
 		this.renewState = renewState;
 	}
 	//
