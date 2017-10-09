@@ -64,6 +64,5 @@ public class ItemTableTest {
 		testItemTable.deleteAll("9781442616899");
 		assertEquals("N/A", testItemTable.getItemList().get(1).getISBN());
 		assertEquals("N/A", testItemTable.getItemList().get(1).getCopyNumber());
-	}
-	
+	}	
 }
