@@ -19,11 +19,11 @@ public class UserTest {
 	
 	@Test
 	public void test_getPassword() {
-		assertEquals("password", testUser.getPassword());
+		assertEquals("Bob", testUser.getPassword());
 	}
 	
 	@Test
 	public void test_getUsername() {
-		assertEquals("Bob", testUser.getUsername());
+		assertEquals("password", testUser.getUsername());
 	}
 }

@@ -55,6 +55,7 @@ public class TitleTableTest {
 		assertEquals("Active Loan Exists", testTitleTable.delete("9781442668584"));
 		assertEquals("The Title Does Not Exist", testTitleTable.delete("9781442668584909"));
 		assertEquals("success", testTitleTable.delete("9781611687910"));
+		testTitleTable.createTitle("9781611687910", "Writing for justice");
 	}
 	
 }
