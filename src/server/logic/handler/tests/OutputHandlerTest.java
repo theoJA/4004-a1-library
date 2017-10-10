@@ -97,6 +97,13 @@ public class OutputHandlerTest {
 		assertEquals("Success!", testOutputHandler.renew("michelle@carleton.ca,9781611687910,1").getOutput());
 	}
 	
-	
+	@Test
+	public void test_returnBook() {
+		assertEquals("Your input should in this format:'useremail,ISBN,copynumber'", testOutputHandler.returnBook("wrongformat").getOutput());
+		assertEquals("The User Does Not Exist!", testOutputHandler.returnBook("nonexistentUser@carleton.ca,9781442668585,1").getOutput());
+		
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781611687910,1").getOutput());
+	}
 }
 
