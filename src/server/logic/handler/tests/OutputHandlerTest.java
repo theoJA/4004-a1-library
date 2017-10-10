@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.util.Date;
 import server.logic.handler.OutputHandler;
 import server.logic.tables.UserTable;
 import server.logic.tables.TitleTable;
@@ -75,6 +76,18 @@ public class OutputHandlerTest {
 		ItemTable testItemTable = ItemTable.getInstance();
 		assertEquals("Success!", testOutputHandler.deleteItem("9781442616899,"+testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getCopyNumber()).getOutput());
 	}
+	
+	@Test
+	public void test_borrow() {
+		assertEquals("Your input should in this format:'useremail,ISBN,copynumber'", testOutputHandler.borrow("wrongformat").getOutput());
+		assertEquals("The User Does Not Exist!", testOutputHandler.borrow("nonexistentUser@carleton.ca,9781442668585,1").getOutput());
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
+		
+		LoanTable testLoanTable = LoanTable.getInstance();
+		Date testDate = new Date();
+		assertEquals("success", testLoanTable.returnItem(2, "9781611687910", "1", testDate));
+	}
+	
 	
 }
 
