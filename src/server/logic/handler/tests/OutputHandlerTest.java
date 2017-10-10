@@ -119,6 +119,12 @@ public class OutputHandlerTest {
 		assertEquals("Success!", testOutputHandler.payFine("michelle@carleton.ca").getOutput());
 	}
 	
+	@Test
+	public void test_clerkLogin() {
+		assertEquals("Wrong Password!Please Input The Password:", testOutputHandler.clerkLogin("wrongpassword").getOutput());
+		assertEquals("What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.", testOutputHandler.clerkLogin("admin").getOutput());
+	}
+	
 	
 }
 
