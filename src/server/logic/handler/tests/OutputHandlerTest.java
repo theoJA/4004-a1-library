@@ -105,5 +105,20 @@ public class OutputHandlerTest {
 		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
 		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781611687910,1").getOutput());
 	}
+	
+	@Test
+	public void test_payFine() {
+		assertEquals("The User Does Not Exist!", testOutputHandler.payFine("someuser@carleton.ca").getOutput());
+		assertEquals("Your input should in this format:'useremail'", testOutputHandler.payFine("wrongFormat").getOutput());
+		
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
+		
+		FeeTable testFeeTable = FeeTable.getInstance();
+		testFeeTable.applyFee(2, 600000); // borrow book for 10 days, should get fined $5
+		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.payFine("michelle@carleton.ca").getOutput());
+	}
+	
+	
 }
 
