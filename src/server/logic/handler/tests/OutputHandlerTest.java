@@ -38,5 +38,17 @@ public class OutputHandlerTest {
 		testTitleTable.delete("9781442668585");
 	}
 	
-
+	@Test
+	public void test_createItem() {
+		assertEquals("The Title Does Not Exists!", testOutputHandler.createItem("9781442668585").getOutput());
+		assertEquals("Your input should in this format:'ISBN',ISBN should be a 13-digit number", testOutputHandler.createItem("wrongFormat").getOutput());
+		assertEquals("Success!", testOutputHandler.createItem("9781442616899").getOutput());
+		
+		
+		ItemTable testItemTable = ItemTable.getInstance();
+		testItemTable.delete("9781442616899", testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getCopyNumber());
+	}
+	
+	
 }
+
