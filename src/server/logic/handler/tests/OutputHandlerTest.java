@@ -125,6 +125,12 @@ public class OutputHandlerTest {
 		assertEquals("What can I do for you?Menu:Create User/Title/Item,Delete User/Title/Item.", testOutputHandler.clerkLogin("admin").getOutput());
 	}
 	
-	
+	@Test
+	public void test_userLogin() {
+		assertEquals("Your input should in this format:'username,password'", testOutputHandler.userLogin("wrongformat").getOutput());
+		assertEquals("Wrong Password!Please Input Username and Password:'username,password'", testOutputHandler.userLogin("michelle@carleton.ca,wrongpassword").getOutput());
+		assertEquals("The User Does Not Exist!Please The Username and Password:'username,password'", testOutputHandler.userLogin("wrongUser@carleton.ca,wrongpassword").getOutput());
+		assertEquals("What can I do for you?Menu:Borrow,Renew,Return,Pay Fine.", testOutputHandler.userLogin("michelle@carleton.ca,Michelle").getOutput());
+	}
 }
 
