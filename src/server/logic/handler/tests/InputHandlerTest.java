@@ -2,8 +2,6 @@ package server.logic.handler.tests;
 
 import static org.junit.Assert.*;
 import server.logic.handler.InputHandler;
-import server.logic.handler.OutputHandler;
-import server.logic.handler.model.Output;
 import server.logic.handler.model.ServerOutput;
 
 import org.junit.Test;
@@ -11,7 +9,6 @@ import org.junit.Test;
 public class InputHandlerTest {
 
 	private InputHandler testInputHandler = new InputHandler();
-	private OutputHandler testOutputHandler = new OutputHandler();
 	
 	public int WAITING = 0;
 	public int FINISHWAITING=1;
