@@ -44,9 +44,8 @@ public class OutputHandlerTest {
 		assertEquals("Your input should in this format:'ISBN',ISBN should be a 13-digit number", testOutputHandler.createItem("wrongFormat").getOutput());
 		assertEquals("Success!", testOutputHandler.createItem("9781442616899").getOutput());
 		
-		
 		ItemTable testItemTable = ItemTable.getInstance();
-		testItemTable.delete("9781442616899", testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getCopyNumber());
+		testItemTable.delete("9781442616899",testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getCopyNumber());
 	}
 	
 	@Test
@@ -68,6 +67,14 @@ public class OutputHandlerTest {
 		assertEquals("Success!", testOutputHandler.deleteTitle("9781442668585").getOutput());
 	}
 	
+	@Test
+	public void test_deleteItem() {
+		assertEquals("Your input should in this format:'ISBN,copynumber',ISBN should be a 13-digit number", testOutputHandler.deleteItem("someISBN").getOutput());
+		
+		testOutputHandler.createItem("9781442616899");
+		ItemTable testItemTable = ItemTable.getInstance();
+		assertEquals("Success!", testOutputHandler.deleteItem("9781442616899,"+testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getCopyNumber()).getOutput());
+	}
 	
 }
 
