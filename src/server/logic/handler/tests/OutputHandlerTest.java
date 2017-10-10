@@ -49,6 +49,14 @@ public class OutputHandlerTest {
 		testItemTable.delete("9781442616899", testItemTable.getItemList().get(testItemTable.getItemList().size()-1).getCopyNumber());
 	}
 	
-	
+	@Test
+	public void test_deleteUser() {
+		assertEquals("The User Does Not Exist!", testOutputHandler.deleteUser("someuser@carleton.ca").getOutput());
+		assertEquals("Your input should in this format:'useremail'", testOutputHandler.deleteUser("wrongFormat").getOutput());
+		
+		testOutputHandler.createUser("testuser@carleton.ca,testuser");
+		assertEquals("Success!", testOutputHandler.deleteUser("testuser@carleton.ca").getOutput());
+		
+	}
 }
 
