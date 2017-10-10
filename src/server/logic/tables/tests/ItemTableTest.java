@@ -56,7 +56,8 @@ public class ItemTableTest {
 	public void test_delete() {
 		assertEquals("Active Loan Exists", testItemTable.delete(testISBN, testCopyNumber));
 		assertEquals("The Item Does Not Exist", testItemTable.delete(testISBN+"typo", testCopyNumber));
-		assertEquals("success", testItemTable.delete("9781611687910", testCopyNumber));
+		assertEquals("success", testItemTable.delete("9781317594277", "2"));
+		assertTrue(testItemTable.createItem("9781317594277"));
 	}
 	
 	@Test

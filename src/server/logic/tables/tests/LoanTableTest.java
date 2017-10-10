@@ -33,14 +33,6 @@ public class LoanTableTest {
 		
 		List<Loan> testLoanList = testLoanTable.getLoanList();
 		assertEquals(testLoanList, testLoanTable.getLoanList());
-		System.out.println(testLoanList);
-		assertEquals(testUserId, testLoanTable.getLoanList().get(1).getUserId());
-		//assertEquals(testISBN, testLoanTable.getLoanList().get(1).getISBN());
-		//assertEquals(testCopyNumber, testLoanTable.getLoanList().get(1).getCopyNumber());
-		//assertEquals(testDate, testLoanTable.getLoanList().get(testUserId).getDate());
-		//assertEquals("1", testLoanTable.getLoanList().get(1).getRenewState());
-		
-		//System.out.println(testLoanTable.getLoanList().get(testUserId).getDate());
 	}
 	
 	@Test
@@ -58,7 +50,7 @@ public class LoanTableTest {
 	@Test
 	public void test_checkUser() {
 		assertFalse(testLoanTable.checkUser(testUserId));
-		assertTrue(testLoanTable.checkUser(2));
+		assertTrue(testLoanTable.checkUser(3));
 	}
 	
 	@Test
@@ -92,10 +84,7 @@ public class LoanTableTest {
 		
 		assertEquals("Outstanding Fee Exists", testLoanTable.createLoan(0, "9781611687910", testCopyNumber, testDate));
 		assertEquals("success",testLoanTable.createLoan(1, testISBN, testCopyNumber, testDate));
-		assertEquals("success",testLoanTable.createLoan(1, "9781317594277", testCopyNumber, testDate));
-		assertEquals("success", testLoanTable.createLoan(1, "9781442616899", testCopyNumber, testDate));
-		assertEquals("The Maximum Number of Items is Reached", testLoanTable.createLoan(1, "9781317594277", "2", testDate));
-		
+		assertEquals("success",testLoanTable.createLoan(1, "9781611687910", "1", testDate));
 	}
 	
 	@Test
@@ -121,8 +110,8 @@ public class LoanTableTest {
 		testLoanTable.createLoan(1, testISBN, testCopyNumber, testDate);
 		testLoanTable.createLoan(1, "9781317594277", testCopyNumber, testDate);
 		testLoanTable.createLoan(1, "9781442616899", testCopyNumber, testDate);
-		testLoanTable.createLoan(1, "9781317594277", "2", testDate);
-		assertEquals("The Maximum Number of Items is Reached", testLoanTable.renewal(1, testISBN, testCopyNumber, testDate));
+		testLoanTable.createLoan(1, "9781317594277", "3", testDate);
+		assertEquals("The Maximum Number of Items is Reached", testLoanTable.renewal(1, "9781317594277", "3", testDate));
 		testLoanTable.returnItem(1, "9781317594277", testCopyNumber, testDate);
 		testLoanTable.returnItem(1, "9781442616899", testCopyNumber, testDate);
 		testLoanTable.returnItem(1, "9781317594277", "2", testDate);

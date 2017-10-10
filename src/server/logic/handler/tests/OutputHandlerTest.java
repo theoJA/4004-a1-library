@@ -81,11 +81,11 @@ public class OutputHandlerTest {
 	public void test_borrow() {
 		assertEquals("Your input should in this format:'useremail,ISBN,copynumber'", testOutputHandler.borrow("wrongformat").getOutput());
 		assertEquals("The User Does Not Exist!", testOutputHandler.borrow("nonexistentUser@carleton.ca,9781442668585,1").getOutput());
-		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781317594277,1").getOutput());
 		
 		LoanTable testLoanTable = LoanTable.getInstance();
 		Date testDate = new Date();
-		assertEquals("success", testLoanTable.returnItem(2, "9781611687910", "1", testDate));
+		assertEquals("success", testLoanTable.returnItem(2, "9781317594277", "1", testDate));
 	}
 	
 	@Test
@@ -93,8 +93,8 @@ public class OutputHandlerTest {
 		assertEquals("Your input should in this format:'useremail,ISBN,copynumber'", testOutputHandler.renew("wrongformat").getOutput());
 		assertEquals("The User Does Not Exist!", testOutputHandler.renew("nonexistentUser@carleton.ca,9781442668585,1").getOutput());
 		
-		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
-		assertEquals("Success!", testOutputHandler.renew("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781317594277,1").getOutput());
+		assertEquals("Success!", testOutputHandler.renew("michelle@carleton.ca,9781317594277,1").getOutput());
 	}
 	
 	@Test
@@ -102,8 +102,8 @@ public class OutputHandlerTest {
 		assertEquals("Your input should in this format:'useremail,ISBN,copynumber'", testOutputHandler.returnBook("wrongformat").getOutput());
 		assertEquals("The User Does Not Exist!", testOutputHandler.returnBook("nonexistentUser@carleton.ca,9781442668585,1").getOutput());
 		
-		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
-		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781317594277,1").getOutput());
+		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781317594277,1").getOutput());
 	}
 	
 	@Test
@@ -111,11 +111,11 @@ public class OutputHandlerTest {
 		assertEquals("The User Does Not Exist!", testOutputHandler.payFine("someuser@carleton.ca").getOutput());
 		assertEquals("Your input should in this format:'useremail'", testOutputHandler.payFine("wrongFormat").getOutput());
 		
-		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.borrow("michelle@carleton.ca,9781317594277,1").getOutput());
 		
 		FeeTable testFeeTable = FeeTable.getInstance();
 		testFeeTable.applyFee(2, 600000); // borrow book for 10 days, should get fined $5
-		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781611687910,1").getOutput());
+		assertEquals("Success!", testOutputHandler.returnBook("michelle@carleton.ca,9781317594277,1").getOutput());
 		assertEquals("Success!", testOutputHandler.payFine("michelle@carleton.ca").getOutput());
 	}
 	
