@@ -16,8 +16,16 @@ public class OutputHandlerTest {
 		
 		// creating user with the wrong user name format
 		assertEquals("Your input should in this format:'username,password'", testOutputHandler.createUser("newUser,password").getOutput());
+		assertEquals("The User Already Exists!", testOutputHandler.createUser("zhibo@carleton.ca,zhibo").getOutput());
+		assertEquals("Success!", testOutputHandler.createUser("newUser@carleton.ca,password").getOutput());
 		
+		UserTable testUserTable = UserTable.getInstance();
+		testUserTable.delete(testUserTable.getUserList().size() - 1);
 		
 	}
+	
+	//@Test
+	//public void test_createTitle
+	
 
 }
