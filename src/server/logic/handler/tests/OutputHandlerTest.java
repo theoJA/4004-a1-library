@@ -58,5 +58,16 @@ public class OutputHandlerTest {
 		assertEquals("Success!", testOutputHandler.deleteUser("testuser@carleton.ca").getOutput());
 		
 	}
+	
+	@Test
+	public void test_deleteTitle() {
+		assertEquals("The Title Does Not Exist!", testOutputHandler.deleteTitle("9781442668585").getOutput());
+		assertEquals("Your input should in this format:'ISBN',ISBN should be a 13-digit number", testOutputHandler.deleteTitle("wrongFormat").getOutput());
+		
+		testOutputHandler.createTitle("9781442668585,By the grace of Not God");
+		assertEquals("Success!", testOutputHandler.deleteTitle("9781442668585").getOutput());
+	}
+	
+	
 }
 
