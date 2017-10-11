@@ -2852,4 +2852,36 @@
 @2017-10-10 19:45:34 INFO  String:27 - Operation:Initialize ItemTable;ItemTable: [server.logic.model.Item@75a1cd57, server.logic.model.Item@3d012ddd, server.logic.model.Item@6f2b958e, server.logic.model.Item@1eb44e46, server.logic.model.Item@6504e3b2, server.logic.model.Item@515f550a]
 @2017-10-10 19:45:34 INFO  String:29 - Operation:Initialize LoanTable;LoanTable: [server.logic.model.Loan@379619aa, server.logic.model.Loan@cac736f]
 @2017-10-10 19:45:34 INFO  String:102 - Operation:Delete Item;Item Info:[9781317594277,N/A];State:Success
+@2017-10-10 20:14:26 INFO  String:28 - Operation:Initialize UserTable;UserTable: [server.logic.model.User@1c4af82c, server.logic.model.User@379619aa, server.logic.model.User@cac736f, server.logic.model.User@5e265ba4, server.logic.model.User@156643d4]
+@2017-10-10 20:14:26 INFO  String:103 - Operation:Create New User;User Info:[newUser@carleton.ca,password];State:Success
+@2017-10-10 20:14:26 INFO  String:106 - Operation:Create New User;User Info:[zhibo@carleton.ca,zhibo];State:Fail;Reason:The User already existed.
+@2017-10-10 20:14:26 INFO  String:26 - Operation:Initialize TitleTable;TitleTable: [server.logic.model.Title@2401f4c3, server.logic.model.Title@7637f22, server.logic.model.Title@4926097b, server.logic.model.Title@762efe5d, server.logic.model.Title@5d22bbb7]
+@2017-10-10 20:14:26 INFO  String:102 - Operation:Delete Title;ISBN Info:[9781442668585];State:Fail;Reason:The Title Does Not Exist.
+@2017-10-10 20:14:26 INFO  String:29 - Operation:Initialize LoanTable;LoanTable: [server.logic.model.Loan@39ed3c8d, server.logic.model.Loan@71dac704]
+@2017-10-10 20:14:26 INFO  String:27 - Operation:Initialize ItemTable;ItemTable: [server.logic.model.Item@2d363fb3, server.logic.model.Item@7d6f77cc, server.logic.model.Item@5aaa6d82, server.logic.model.Item@73a28541, server.logic.model.Item@6f75e721, server.logic.model.Item@69222c14]
+@2017-10-10 20:14:26 INFO  String:119 - Operation:Delete Item Due to Title Deletion;ISBN Info:[9781317594277];State:Success
+@2017-10-10 20:14:26 INFO  String:119 - Operation:Delete Item Due to Title Deletion;ISBN Info:[9781317594277];State:Success
+@2017-10-10 20:14:26 INFO  String:95 - Operation:Delete Title;Title Info:[9781317594277,The act in context];State:Success
+@2017-10-10 20:14:26 INFO  String:109 - Operation:Delete Item;Item Info:[9781317594277,2];State:Fail;Reason:The Item Does Not Exist.
+@2017-10-10 20:14:26 INFO  String:71 - Operation:Create New Item;Item Info:[9781442616899,2];State:Success
+@2017-10-10 20:14:26 INFO  String:68 - Operation:Apply OutStanding Fee;Fee Info:[0,0];State:Success
+@2017-10-10 20:14:26 INFO  String:81 - Operation:Apply OutStanding Fee;Fee Info:[1,0];State:Success
+@2017-10-10 20:14:26 INFO  String:35 - Operation:Initialize FeeTable;FeeTable: [server.logic.model.Fee@2c13da15, server.logic.model.Fee@77556fd]
+@2017-10-10 20:14:26 INFO  String:141 - Operation:Delete User;User Info:[sun@carleton.ca,sun];State:Success
+@2017-10-10 20:14:26 INFO  String:207 - Operation:Return Item;Loan Info:[0,9781442668584,1,2017-10-10 08:14:26];State:Success
+@2017-10-10 20:14:26 INFO  String:207 - Operation:Return Item;Loan Info:[1,9781442667181,1,2017-10-10 08:14:26];State:Success
+@2017-10-10 20:14:26 INFO  String:165 - Operation:Pay Fine;Fee Info:[1,0];State:Success
+@2017-10-10 20:14:26 INFO  String:253 - Operation:Renew Item;Loan Info:[1,9781442667181,1,2017-10-10 08:14:26];State:Fail;Reason:The loan does not exist.
+@2017-10-10 20:14:26 INFO  String:163 - Operation:Borrow Item;Loan Info:[2,9781317594277,1,2017-10-10 08:14:26];State:Fail;Reason:Invalid ISBN.
+@2017-10-10 20:14:26 INFO  String:71 - Operation:Create New Title;Title Info:[9781442668584,By the grace of God];State:Fail;Reason:The ISBN already existed.
+@2017-10-10 20:14:26 INFO  String:68 - Operation:Create New Title;Title Info:[9781442668585,By the grace of Not God];State:Success
+@2017-10-10 20:14:26 INFO  String:214 - Operation:Return Item;Loan Info:[1,9781442667181,1,2017-10-10 08:14:26];State:Fail;Reason:The Loan Does Not Exist.
+@2017-10-10 20:14:34 INFO  String:28 - Operation:Initialize UserTable;UserTable: [server.logic.model.User@7dc5e7b4, server.logic.model.User@1ee0005, server.logic.model.User@75a1cd57, server.logic.model.User@3d012ddd, server.logic.model.User@6f2b958e]
+@2017-10-10 20:14:34 INFO  String:29 - Operation:Initialize LoanTable;LoanTable: [server.logic.model.Loan@626b2d4a, server.logic.model.Loan@5e91993f]
+@2017-10-10 20:14:34 INFO  String:26 - Operation:Initialize TitleTable;TitleTable: [server.logic.model.Title@379619aa, server.logic.model.Title@cac736f, server.logic.model.Title@5e265ba4, server.logic.model.Title@156643d4, server.logic.model.Title@123a439b]
+@2017-10-10 20:14:34 INFO  String:27 - Operation:Initialize ItemTable;ItemTable: [server.logic.model.Item@1175e2db, server.logic.model.Item@36aa7bc2, server.logic.model.Item@76ccd017, server.logic.model.Item@182decdb, server.logic.model.Item@26f0a63f, server.logic.model.Item@4361bd48]
+@2017-10-10 20:14:34 INFO  String:68 - Operation:Apply OutStanding Fee;Fee Info:[0,0];State:Success
+@2017-10-10 20:14:34 INFO  String:81 - Operation:Apply OutStanding Fee;Fee Info:[1,0];State:Success
+@2017-10-10 20:14:34 INFO  String:35 - Operation:Initialize FeeTable;FeeTable: [server.logic.model.Fee@4926097b, server.logic.model.Fee@762efe5d]
+@2017-10-10 20:14:34 INFO  String:173 - Operation:Borrow Item;Loan Info:[2,9781317594277,1,2017-10-10 08:14:34];State:Success
 @
