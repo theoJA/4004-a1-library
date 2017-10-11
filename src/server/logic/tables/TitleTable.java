@@ -3,10 +3,12 @@ package server.logic.tables;
 import java.util.ArrayList;
 import java.util.List;
 import server.logic.model.Title;
+import org.apache.log4j.Logger;
+import utilities.Trace;
 
 public class TitleTable {
 	
-	//private Logger logger = Trace.getInstance().getLogger("opreation_file");
+	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 	List<Title> titleList=new ArrayList<Title>();
 	
     private static class TitleListCollection {
@@ -21,7 +23,7 @@ public class TitleTable {
     		Title newTitle=new Title(ISBNList[i],titlenameList[i]);
     		titleList.add(newTitle);
 		}
-    	//logger.info(String.format("Operation:Initialize TitleTable;TitleTable: %s", titleList));
+    	logger.info(String.format("Operation:Initialize TitleTable;TitleTable: %s", titleList));
     }
     
     public static final TitleTable getInstance() {
@@ -63,10 +65,10 @@ public class TitleTable {
 		if(flag==0){
 			Title newtitle=new Title(ISBN,bookTitle);
 			result=titleList.add(newtitle);
-			//logger.info(String.format("Operation:Create New Title;Title Info:[%s,%s];State:Success", string,string2));
+			logger.info(String.format("Operation:Create New Title;Title Info:[%s,%s];State:Success", ISBN,bookTitle));
 		}else{
 			result=false;
-			//logger.info(String.format("Operation:Create New Title;Title Info:[%s,%s];State:Fail;Reason:The ISBN already existed.", string,string2));
+			logger.info(String.format("Operation:Create New Title;Title Info:[%s,%s];State:Fail;Reason:The ISBN already existed.", ISBN,bookTitle));
 		}
 		return result;	
 	}
@@ -90,14 +92,14 @@ public class TitleTable {
 				ItemTable.getInstance().deleteAll(ISBN);
 				titleList.remove(index);
 				result="success";
-				//logger.info(String.format("Operation:Delete Title;Title Info:[%s,%s];State:Success", string,string2));
+				logger.info(String.format("Operation:Delete Title;Title Info:[%s,%s];State:Success", ISBN,string2));
 			}else{
 				result="Active Loan Exists";
-				//logger.info(String.format("Operation:Delete Title;ISBN Info:[%s];State:Fail;Reason:Active Loan Exists.", string));
+				logger.info(String.format("Operation:Delete Title;ISBN Info:[%s];State:Fail;Reason:Active Loan Exists.", ISBN));
 			}
 		}else{
 			result="The Title Does Not Exist";
-			//logger.info(String.format("Operation:Delete Title;ISBN Info:[%s];State:Fail;Reason:The Title Does Not Exist.", string));
+			logger.info(String.format("Operation:Delete Title;ISBN Info:[%s];State:Fail;Reason:The Title Does Not Exist.", ISBN));
 		}
 		return result;
 	}

@@ -4,17 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//import org.apache.log4j.Logger;
-
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import server.logic.model.Fee;
 import server.logic.model.Loan;
 import utilities.Config;
-//import utilities.Trace;
+import utilities.Trace;
 
 public class FeeTable {
-	//private Logger logger = Trace.getInstance().getLogger("opreation_file");
+	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 	
 	List<Fee> feeList=new ArrayList<Fee>();
     
@@ -34,7 +32,7 @@ public class FeeTable {
     	for(int i=0;i<loanList.size();i++){
     		applyFee(loanList.get(i).getUserId(), new Date().getTime()-loanList.get(i).getDate().getTime());
     	}
-    	//logger.info(String.format("Operation:Initialize FeeTable;FeeTable: %s", feeList));
+    	logger.info(String.format("Operation:Initialize FeeTable;FeeTable: %s", feeList));
 	}
     
     public static final FeeTable getInstance() {
@@ -62,12 +60,12 @@ public class FeeTable {
 			if(currFee>=0){ 
 				feeList.get(index).setFee(currFee+feeList.get(index).getFee());
 				feeList.get(index).setUserId(userId);
-				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", userId,currFee+feeList.get(index).getFee()));
 			}else{	
 				// the existing userId's loan hasn't gone past 5 days
 				feeList.get(index).setFee(feeList.get(index).getFee());
 				feeList.get(index).setUserId(userId);
-				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,a+feeList.get(index).getFee()));
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", userId,currFee+feeList.get(index).getFee()));
 			}
 		// If userId doesn't exist in the fee list, we add that userId and a new fee to it
 		}else{
@@ -75,12 +73,12 @@ public class FeeTable {
 			if(currFee>=0){	
 				Fee newFee=new Fee(userId,currFee);
 				feeList.add(newFee);
-				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,currFee));
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", userId,currFee));
 			}else{	
 				// add new userId and a fee of $0 (this is for loans that hasn't gone beyond 5 days) 
 				Fee fee=new Fee(userId,0);
 				feeList.add(fee);
-				//logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", j,0));
+				logger.info(String.format("Operation:Apply OutStanding Fee;Fee Info:[%d,%d];State:Success", userId,0));
 			}
 		}
     }
@@ -159,12 +157,12 @@ public class FeeTable {
 		}
 		if(oloan==false){
 			result="Borrowing Items Exist";
-			//logger.info(String.format("Operation:Pay Fine;Fee Info:[%d,%d];State:Fail;Reason:Borrowing Items Exist.", i,fee));
+			logger.info(String.format("Operation:Pay Fine;Fee Info:[%d,%d];State:Fail;Reason:Borrowing Items Exist.", userId,fee));
 		}else{
 			feeList.get(index).setUserId(userId);
 			feeList.get(index).setFee(0);
 			result="success";
-			//logger.info(String.format("Operation:Pay Fine;Fee Info:[%d,%d];State:Success", i,fee));
+			logger.info(String.format("Operation:Pay Fine;Fee Info:[%d,%d];State:Success", userId,fee));
 		}
 		return result;
 	}

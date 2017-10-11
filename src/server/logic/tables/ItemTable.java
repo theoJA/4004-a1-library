@@ -3,12 +3,12 @@ package server.logic.tables;
 import java.util.ArrayList;
 import java.util.List;
 import server.logic.model.Item;
-//import org.apache.log4j.Logger;
-//import utilities.Trace;
+import org.apache.log4j.Logger;
+import utilities.Trace;
 
 public class ItemTable {
 	
-	//private Logger logger = Trace.getInstance().getLogger("opreation_file");
+	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 	
 	List<Item> itemList=new ArrayList<Item>();
     
@@ -24,7 +24,7 @@ public class ItemTable {
 			Item newItem=new Item(i,ISBNList[i],copiesList[i]);
 			itemList.add(newItem);
 		}
-    	//logger.info(String.format("Operation:Initialize ItemTable;ItemTable: %s", itemList));
+    	logger.info(String.format("Operation:Initialize ItemTable;ItemTable: %s", itemList));
     };
     
     public static final ItemTable getInstance() {
@@ -68,10 +68,10 @@ public class ItemTable {
 		Item newitem=new Item(itemList.size(),ISBN,String.valueOf(flag+1));
 		itemList.add(newitem);
 		System.out.println(newitem.getCopyNumber());
-		//logger.info(String.format("Operation:Create New Item;Item Info:[%s,%s];State:Success", string,String.valueOf(flag+1)));
+		logger.info(String.format("Operation:Create New Item;Item Info:[%s,%s];State:Success", ISBN,String.valueOf(flag+1)));
 		}else{
 			result=false;
-			//logger.info(String.format("Operation:Create New Item;Item Info:[%s,%s];State:Fail;Reason:No such ISBN existed.", string,"N/A"));
+			logger.info(String.format("Operation:Create New Item;Item Info:[%s,%s];State:Fail;Reason:No such ISBN existed.", ISBN,"N/A"));
 		}
 		return result;
 	}
@@ -99,14 +99,14 @@ public class ItemTable {
 			if(loan){
 			itemList.get(index).setCopyNumber("N/A");
 			result="success";
-			//logger.info(String.format("Operation:Delete Item;Item Info:[%s,%s];State:Success", string,"N/A"));
+			logger.info(String.format("Operation:Delete Item;Item Info:[%s,%s];State:Success", ISBN,"N/A"));
 			}else{
 				result="Active Loan Exists";
-				//logger.info(String.format("Operation:Delete Item;Item Info:[%s,%s];State:Fail;Reason:The item is currently on loan.", string,string2));
+				logger.info(String.format("Operation:Delete Item;Item Info:[%s,%s];State:Fail;Reason:The item is currently on loan.", ISBN,copyNumber));
 			}
 		}else{
 			result="The Item Does Not Exist";
-			//logger.info(String.format("Operation:Delete Item;Item Info:[%s,%s];State:Fail;Reason:The Item Does Not Exist.", string,string2));
+			logger.info(String.format("Operation:Delete Item;Item Info:[%s,%s];State:Fail;Reason:The Item Does Not Exist.", ISBN,copyNumber));
 		}
 		return result;
 	}
@@ -116,7 +116,7 @@ public class ItemTable {
 			if(ISBN.equalsIgnoreCase(itemList.get(i).getISBN())){
 				itemList.get(i).setISBN("N/A");
 				itemList.get(i).setCopyNumber("N/A");
-				//logger.info(String.format("Operation:Delete Item Due to Title Deletion;ISBN Info:[%s];State:Success", string));
+				logger.info(String.format("Operation:Delete Item Due to Title Deletion;ISBN Info:[%s];State:Success", ISBN));
 			}
 		}
 	}

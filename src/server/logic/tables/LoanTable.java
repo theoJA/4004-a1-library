@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import server.logic.model.Loan;
-//import utilities.Trace;
+import utilities.Trace;
 import utilities.Config;
 
 public class LoanTable {
-	//private Logger logger = Trace.getInstance().getLogger("opreation_file");
+	private Logger logger = Trace.getInstance().getLogger("opreation_file");
 	List<Loan> loanList=new ArrayList<Loan>();
 	
     private static class LoanListCollection {
@@ -26,7 +26,7 @@ public class LoanTable {
     	loanList.add(loan0);
     	Loan loan1 = new Loan(1,"9781442667181","1",new Date(),"0");
     	loanList.add(loan1);
-    	//logger.info(String.format("Operation:Initialize LoanTable;LoanTable: %s", loanList));
+    	logger.info(String.format("Operation:Initialize LoanTable;LoanTable: %s", loanList));
     };
     
     public static final LoanTable getInstance() {
@@ -157,30 +157,30 @@ public class LoanTable {
 		boolean fee=FeeTable.getInstance().lookup(userId);
 		if(user==false){
 			result="User Invalid";
-			//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Invalid User.", i,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Invalid User.", userId,ISBN,copyNumber,dateformat(date)));
 		}else if(isbn==false){
 			result="ISBN Invalid";
-			//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Invalid ISBN.", i,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Invalid ISBN.", userId,ISBN,copyNumber,dateformat(date)));
 		}else if(copynumber==false){
 			result="Copynumber Invalid";
-			//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Invalid Copynumber.", i,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Invalid Copynumber.", userId,ISBN,copyNumber,dateformat(date)));
 		}else{
 			if(oloan){
 				if(limit && fee){
 				Loan loan=new Loan(userId,ISBN,copyNumber,date,"0");
 				loanList.add(loan);
 				result="success";
-				//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Success", i,string,string2,dateformat(date)));
+				logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Success", userId,ISBN,copyNumber,dateformat(date)));
 				}else if(limit==false){
 					result="The Maximum Number of Items is Reached";
-					//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Maximun Number of Items is Reached.", i,string,string2,dateformat(date)));
+					logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Maximun Number of Items is Reached.", userId,ISBN,copyNumber,dateformat(date)));
 				}else if(fee==false){
 					result="Outstanding Fee Exists";
-					//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Outstanding Fee Exists.", i,string,string2,dateformat(date)));
+					logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Outstanding Fee Exists.", userId,ISBN,copyNumber,dateformat(date)));
 				}
 			}else{
 				result="The Item is Not Available";
-				//logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Item is Not Available.", i,string,string2,dateformat(date)));
+				logger.info(String.format("Operation:Borrow Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Item is Not Available.", userId,ISBN,copyNumber,dateformat(date)));
 			}
 		}
     	return result;
@@ -204,14 +204,14 @@ public class LoanTable {
 		if(flag!=0){
 			long time = date.getTime()-loanList.get(index).getDate().getTime();
 			loanList.remove(index);
-			//logger.info(String.format("Operation:Return Item;Loan Info:[%d,%s,%s,%s];State:Success", j,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Return Item;Loan Info:[%d,%s,%s,%s];State:Success", userId,ISBN,copyNumber,dateformat(date)));
 			if(time>Config.OVERDUE*Config.STIMULATED_DAY){
 				FeeTable.getInstance().applyFee(userId,time);
 			}
 			result="success";
 		}else{
 			result="The Loan Does Not Exist";
-			//logger.info(String.format("Operation:Return Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Loan Does Not Exist.", j,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Return Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Loan Does Not Exist.", userId,ISBN,copyNumber,dateformat(date)));
 		}
 		
 		return result;
@@ -243,22 +243,22 @@ public class LoanTable {
 					loanList.get(index).setDate(new Date());
 					loanList.get(index).setRenewState("1");
 					result="success";
-					//logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Success", j,string,string2,dateformat(date)));
+					logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Success", userId,ISBN,copyNumber,dateformat(date)));
 				}else{
 					result="Renewed Item More Than Once for the Same Loan";
-					//logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Renewed Item More Than Once for the Same Loan.", j,string,string2,dateformat(date)));
+					logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Renewed Item More Than Once for the Same Loan.", userId,ISBN,copyNumber,dateformat(date)));
 					}
 			}else{
 				result="The loan does not exist";
-				//logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The loan does not exist.", j,string,string2,dateformat(date)));
+				logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The loan does not exist.", userId,ISBN,copyNumber,dateformat(date)));
 			}
 			
 		}else if(limit==false){
 			result="The Maximum Number of Items is Reached";
-			//logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Maximun Number of Items is Reached.", j,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:The Maximun Number of Items is Reached.", userId,ISBN,copyNumber,dateformat(date)));
 		}else if(fee==false){
 			result="Outstanding Fee Exists";
-			//logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Outstanding Fee Exists.", j,string,string2,dateformat(date)));
+			logger.info(String.format("Operation:Renew Item;Loan Info:[%d,%s,%s,%s];State:Fail;Reason:Outstanding Fee Exists.", userId,ISBN,copyNumber,dateformat(date)));
 		}
 		return result;
 	}
